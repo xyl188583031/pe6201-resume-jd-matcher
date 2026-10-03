@@ -1,0 +1,15 @@
+Siti Nurhaliza
+siti.nurhaliza@example.edu | +65 9123 4503 | Singapore
+
+SUMMARY
+Master of Science candidate in Data Science. Focus on evidenced, measurable work.
+
+EDUCATION
+Nanyang Technological University - Master of Science in Data Science, expected graduation 2027
+
+SKILLS
+Python, machine learning, deep learning, PyTorch, scikit-learn, natural language processing (NLP), model evaluation, SQL, pandas, NumPy, Git
+
+EXPERIENCE
+Meridian Labs - Research Assistant (Aug 2024 - Dec 2024)
+- Applied PyTorch; Applied model evaluation on a supervised team project with a documented outcome.

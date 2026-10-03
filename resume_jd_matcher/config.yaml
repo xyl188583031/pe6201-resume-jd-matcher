@@ -1,0 +1,184 @@
+# =============================================================
+# Graduate Resume-JD Matcher with RAG-Prefill Assistant
+# Single source of truth for tunables. Referenced by src/config.py
+# Maps to Problem Statement sections 5 (build vs rent), 7 (metrics), 8 (risk).
+#
+# v0.2.0 - incorporates Milestone 1 instructor feedback:
+#   DATA            -> report COUNTS (x/20), not percentages; generator can scale to 40
+#   OUTCOME METRICS -> the 30% time-saving timer is demoted to an optional,
+#                      gated secondary metric (needs >=3 independent timers)
+# v0.3.0 - live-run fixes found by driving the real API path:
+#   confidence      -> fabrication_cap promoted from a literal to config
+#   (see CHANGELOG in README for the fabrication-guard fix behind it)
+# =============================================================
+
+app:
+  name: "Graduate Resume-JD Matcher with RAG-Prefill Assistant"
+  version: "0.3.0"
+  # Shown on every launch (PS section 8, Risk 3 & 4: explicit prototype labelling)
+  prototype_banner: "Prototype - not for live sites. Simulated HTML form only. Synthetic data only."
+  non_use_notice: "Not for real job submissions, not for generating fictitious work history, not for automated form submission."
+
+llm:
+  provider: "openrouter"
+  base_url: "https://openrouter.ai/api/v1"
+  # Rented foundation model, no fine-tuning (PS section 4 & 5)
+  model: "openai/gpt-4o-mini"
+  fallback_model: "openai/gpt-4o-mini"
+  temperature: 0.1
+  max_tokens: 1200
+  timeout_s: 60
+  max_retries: 2
+  # PS section 5: ~$0.15 / 1M input tokens, ~$0.60 / 1M output tokens
+  # Used only for cost *estimation* in the run log.
+  pricing_usd_per_1m_tokens:
+    input: 0.15
+    output: 0.60
+
+retrieval:
+  # auto  -> use Chroma if importable, else fall back to the local numpy store
+  backend: "auto"            # auto | chroma | local
+  persist_dir: "artifacts/chroma_db"
+  collection: "resume_knowledge"
+  # auto  -> sentence-transformers if importable, else deterministic TF-IDF vectors
+  embedding_backend: "auto"  # auto | sentence_transformers | tfidf
+  embedding_model: "sentence-transformers/all-MiniLM-L6-v2"
+  # Optional local copy of the model. When this directory contains config.json
+  # and a non-empty weights file, the semantic embedder is loaded from here
+  # instead of from the Hugging Face hub. Reason: the hub downloader writes into
+  # a shared cache directory, that write can be blocked by a host-level delete
+  # guard, and the resulting zero-byte placeholder degrades the run to a lexical
+  # embedder without reporting it. Populated with:
+  #   curl -L -o <file> https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/<file>
+  embedding_model_path: "vendor/models/all-MiniLM-L6-v2"
+  top_k: 4
+  min_chunk_chars: 40
+  max_chunk_chars: 500       # PS section 6: ~50 short chunks, each <500 chars
+  # Raw cosine similarity is not on a 0-1 scale you can threshold at 0.4, so it
+  # is linearly rescaled onto [0,1]:
+  #   similarity = clip((cosine - floor) / (ceiling - floor), 0, 1)
+  #
+  # Derived, not hand-tuned. Reproduce with:
+  #     python scripts/calibrate_similarity.py --write-note
+  # Method: 100 JD-shaped probe queries generated from the job-family skill
+  # lists in data/synthetic_generator/jd_bank.json (fixed seed 20260824).
+  #   floor   = p10 "best hit from an irrelevant family" = 0.3663
+  #   ceiling = p90 "best hit from a relevant family"    = 0.5633
+  # Measured with the sentence-transformers backend on KB v2, 2026-09-25.
+  # Separation (relevant median - irrelevant median) = +0.0621.
+  #
+  # Decile anchors, not median-to-median. The previous revision anchored at the
+  # two medians, which is a 0.043-wide band: any retrieval above it saturated at
+  # 1.000 (15 of 20 evaluation cases did) and any retrieval below it clipped to
+  # 0.000, forcing false abstentions on cases that had been retrieved correctly.
+  # The decile anchors widen the band to 0.197, so the score varies instead of
+  # being effectively binary. Useful property that falls out of it: the 0.4
+  # abstention threshold now sits at cosine 0.445, which is the median of the
+  # WRONG-family distribution - i.e. the system declines when retrieval is no
+  # better than a typical wrong-subject retrieval.
+  #
+  # NOT fixed by this: the two distributions still overlap (p95 of irrelevant =
+  # 0.5205 exceeds the relevant median = 0.5054). No monotone rescaling can make
+  # this a strong confidence component, and the report says so. No evaluation
+  # case or ground-truth label is read by the calibration, so it cannot be fitted
+  # to the test set. RE-CALIBRATE when the embedding backend or the KB changes.
+  similarity_floor: 0.3663
+  similarity_ceiling: 0.5633
+
+confidence:
+  # Deterministic abstention rule (PS section 4 & 6): confidence < 0.4 -> decline
+  abstention_threshold: 0.4
+  # confidence = w_retrieval * retrieval_similarity + w_llm * llm_self_confidence
+  weights:
+    retrieval: 0.6
+    llm_self: 0.4
+  # PS section 8, Risk 2: abstain when EITHER component falls below threshold
+  abstain_on_either_component: true
+  # PS section 7: a "hard case" is defined as <50% skill overlap
+  hard_case_overlap_threshold: 0.5
+  # When the fabrication guard strips a model claim that the candidate's own
+  # text does not support, it also caps the model's self-confidence here. The
+  # cap is deliberately BELOW abstention_threshold: a caught fabrication forces
+  # a decline, not a slightly-less-confident answer. Named here rather than
+  # hardcoded in the pipeline so the number that decides abstention is
+  # reviewable - it is the third input to the abstention rule.
+  fabrication_cap: 0.35
+
+evaluation:
+  conditions: ["A", "B", "C"]
+  # --- instructor feedback: DATA ------------------------------------------
+  # "20 cases, five per job family, against a 16/20 pass bar - one miss is
+  #  five points. Report counts rather than percentages, or get to 40."
+  # Counts are the headline unit everywhere; percentages are supplementary.
+  report_counts_primary: true
+  n_cases: 20                    # supported: 20 (5/family) or 40 (10/family)
+  supported_n_cases: [20, 40]
+  job_families: ["AI/ML", "Software Engineering", "Data Analytics", "Product Management"]
+  variants_per_family_at_20: 5
+  variants_per_family_at_40: 10
+  # 16/20 == 0.80. Expressed as a fraction so it survives scaling to 40.
+  pass_bar_fraction: 0.80
+  slice_pass_min_cases: 16       # kept for the 20-case slice as written in PS section 9
+  # PS section 7: abstention rate bounded, <30% acceptable
+  abstention_rate_ceiling: 0.3
+  prefill_exact_match_fields:
+    - "full_name"
+    - "email"
+    - "education_school"
+    - "top_skills"
+
+# --- instructor feedback: OUTCOME METRICS --------------------------------
+# "The 30% time saving has one timer and it is you both times - you will be
+#  faster the second run because you know the answers. Find three people or
+#  drop it. A/B/C on fabrication and skill coverage carries the claim alone."
+# Decision: dropped from the headline claim. It is an optional secondary
+# metric that refuses to emit numbers unless >=3 independent timers signed off.
+timing:
+  enabled: false
+  min_independent_timers: 3
+  target_reduction: 0.30
+  timers_file: "data/timing/timers.csv"
+
+privacy:
+  # PS section 8, Risk 4: in-memory only, no persistence of user input.
+  # The run log records *hashes and lengths*, never raw user text.
+  persist_user_inputs: false
+  log_raw_user_text: false
+  max_input_chars: 20000
+  sanitize_untrusted_text: true   # OWASP LLM01: the pasted JD is untrusted text
+  # instructor feedback: COURSE COVERAGE - "LLM01 is fair, the JD is untrusted
+  # text - but nothing auto-submits and nothing persists. One line."
+  # -> keep the mitigation, do not over-claim it.
+
+paths:
+  knowledge_base: "data/knowledge_base/kb_chunks.json"
+  cases: "data/cases/cases.json"
+  ground_truth: "data/cases/ground_truth.csv"
+  form_schema: "data/form_schema.json"
+  artifacts: "artifacts"
+  runs_log: "artifacts/runs.jsonl"
+  metrics_csv: "artifacts/metrics.csv"
+  report_md: "artifacts/report.md"
+
+# =============================================================
+# Local backend for the Chrome extension (v0.3.0).
+#
+# The server exists so the browser path shares the evaluated pipeline instead of
+# re-implementing it. Tunables that belong to the transport live here; the
+# thresholds that decide whether an answer may be shown stay under `confidence:`
+# and `retrieval:`, and are deliberately not duplicated.
+#
+# host is loopback-only. `server/security.py` refuses anything else, because this
+# endpoint accepts a candidate's personal data and a 0.0.0.0 bind would publish
+# it to the local network. Reach it remotely through an SSH tunnel instead.
+# =============================================================
+server:
+  host: "127.0.0.1"          # loopback only; enforced, not merely defaulted
+  port: 8765
+  # Hard cap on how much of a fetched job posting is kept. Matches
+  # privacy.max_input_chars, because everything fetched is later fed to the model.
+  max_fetch_chars: 20000
+  # Only browser-extension origins may call the API. A permissive `*` would let
+  # any site the user visits read the profile out of the local server.
+  cors_origin_regex: "^(chrome|moz)-extension://[A-Za-z0-9_\\-]+$"
+

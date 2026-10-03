@@ -1,0 +1,22 @@
+{
+  "meta": {
+    "form": "simulated_recruitment_form",
+    "purpose": "PS section 8, Risk 3: pre-fill is demonstrated against a simulated HTML form only. The UI must label it 'Prototype - not for live sites'.",
+    "notice": "Prototype - not for live sites. Simulated form. No data leaves this machine.",
+    "behaviour": {
+      "fill_mode": "suggestion",
+      "description": "Clicking a field shows an editable AI suggestion. Nothing is written into the form until the user clicks Fill. PS section 8, Risk 1 requires a human in the loop.",
+      "abstention": "A field whose confidence is below the abstention threshold is marked `abstained` and shows a warning instead of a value."
+    }
+  },
+  "fields": [
+    { "name": "full_name",              "label": "Full name",                  "type": "text",     "is_list": false, "required": true },
+    { "name": "email",                  "label": "Email address",              "type": "email",    "is_list": false, "required": true },
+    { "name": "phone",                  "label": "Contact number",             "type": "tel",      "is_list": false, "required": false },
+    { "name": "education_school",       "label": "University / institution",   "type": "text",     "is_list": false, "required": true },
+    { "name": "education_degree",       "label": "Degree",                     "type": "text",     "is_list": false, "required": false },
+    { "name": "education_major",        "label": "Major / programme",          "type": "text",     "is_list": false, "required": false },
+    { "name": "graduation_year",        "label": "Graduation year",            "type": "text",     "is_list": false, "required": false },
+    { "name": "top_skills",             "label": "Top skills (comma separated)", "type": "text",   "is_list": true,  "required": true }
+  ]
+}

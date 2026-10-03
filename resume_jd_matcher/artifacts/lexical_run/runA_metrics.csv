@@ -1,0 +1,4 @@
+condition,label,n_cases,passed_cases,passed_bar,meets_pass_bar,complete_coverage,zero_fabrication,prefill_all_match,prefill_name,prefill_email,prefill_school,prefill_skills,abstained,abstained_on_hard,abstained_on_easy,mean_coverage,mean_match_score,mean_confidence,total_fabrications
+A,rule-based TF-IDF baseline,20,13,13/20,1,1/20,20/20,13/20,20/20,20/20,14/20,18/20,3/20,3/5,0/15,0.792,0.0,0.732,0
+B,prompt-only LLM,20,14,14/20,1,1/20,20/20,14/20,20/20,20/20,20/20,14/20,0/20,0/5,0/15,0.792,0.0,0.72,0
+C,RAG-enhanced,20,14,14/20,1,1/20,20/20,14/20,20/20,20/20,20/20,14/20,3/20,1/5,2/15,0.792,0.0,0.797,0

@@ -1,0 +1,27 @@
+{
+  "note": "Recorded so a later run can prove the abstention / similarity policy was not edited to make this matrix pass. This is a hash of the files, not a git commit: the repository is not a git working tree.",
+  "files": {
+    "config.yaml": "a787ab8f60b875dc2c6c38773575830b6a9aface149025fa31ae56ac9219ac4f",
+    "src/pipeline/confidence.py": "0e06e38d720462ce7c8aec52308458807c40d65a92488d05fc8e482cf6d04629",
+    "src/rules/fields.py": "aab029a1e633dce5a76304c0a8ad93afb8ea7a8a09daa27bdcc88801daf9024d",
+    "src/taxonomy.py": "9a52510e34cb29a23e9a72a303d47f46eadf6c46830495b195f7302a24bf77c3",
+    "src/retrieval/store.py": "ecf4c6b6b2b451c28b605758089bfaf0e66552da529db95602a56160f273dba1",
+    "src/llm/extractor.py": "73bfaa0e4faebe0037b79ea3d84eab3914d5447f94d75c349c861d7220d382ed",
+    "src/llm/offline.py": "0278f7efe1bfc500de8b1ccef483b11d4b9b746e8fe9cb3f62fc3739a2cb4bd7",
+    "src/sanitize.py": "8e97d716cb32be54232cd7da2701895b0c71ff1ee24a1b9b7dffcc446f3b3bd9",
+    "server/field_map.py": "c613e53b27ac13833e226f1caec06120241fc3436bb482664fa1be2e84578c31",
+    "server/services.py": "ea64fed1b89e8709735641135aee5cfee130c9e32ba5be76f0488b633dfd9d6a",
+    "server/schemas.py": "0fced47b28da13522d5a9fae93b98c085c98b7e5d1cd4cba85c9e529ea774117"
+  },
+  "abstention_threshold": 0.4,
+  "weights": {
+    "retrieval": 0.6,
+    "llm_self": 0.4
+  },
+  "abstain_on_either_component": true,
+  "similarity_floor": 0.3663,
+  "similarity_ceiling": 0.5633,
+  "embedding_backend": "auto",
+  "corpus_recalibrated_for_this_matrix": false,
+  "corpus_note": "The knowledge base was NOT rebuilt and no recalibration was run, so the similarity scale is the one already documented for the same 54-chunk corpus (floor 0.3663, ceiling 0.5633). scripts/calibrate_similarity.py was not invoked."
+}

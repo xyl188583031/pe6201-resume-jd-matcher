@@ -1,0 +1,15 @@
+Lim Xin Yi
+lim.xinyi@example.edu | +65 9123 4505 | Singapore
+
+SUMMARY
+Bachelor of Science candidate in Computer Engineering. Focus on evidenced, measurable work.
+
+EDUCATION
+Nanyang Technological University - Bachelor of Science in Computer Engineering, expected graduation 2026
+
+SKILLS
+Python, machine learning, PyTorch, natural language processing (NLP), feature engineering, SQL, Git
+
+EXPERIENCE
+Coursework Project - Team Member (Jan 2025 - May 2025)
+- Applied Python; Applied machine learning on a supervised team project with a documented outcome.

@@ -1,0 +1,12 @@
+{
+  "jd_id": "jd_cross_domain",
+  "title": "Cross-domain posting - coastal field survey",
+  "purpose": "A posting from a completely different job family. It is paired with cross_domain_profile so that the retrieval score for a posting with no relationship to the knowledge base can be read directly: a tailored field carries that score as its evidence, so a score under 0.4 must produce an abstention rather than a draft.",
+  "synthetic": true,
+  "shape": "narrative_prose",
+  "text": "Coastal Field Survey Assistant\nBlue Shore Conservation Trust, Singapore\n\nWe run quarterly intertidal surveys along the eastern shoreline and we need an\nextra pair of hands for the coming season.\n\nWhat you will do\n- carry out transect counts at low tide, following our existing survey protocol\n- record substrate and species observations on paper and then type them up\n- maintain and clean the survey kit, including the quadrats and the measuring boards\n- brief volunteers at the start of each survey day\n\nWhat we need from you\n- willingness to start before sunrise and work in wet conditions\n- comfort working in a small team with a fixed protocol\n- care with records: an unreadable entry costs us a whole transect\n",
+  "expected_jd_skills": [],
+  "requirements_stated": false,
+  "measured_rescaled_retrieval": 0.0,
+  "notes": "Contains no canonical skill token, so the retrieval query is built from prose alone. The measured score is 0.0 - the raw cosine falls at or under the calibration floor (0.3663) and the rescaling clips it - which is the expected result for a posting with no relationship to the knowledge base."
+}

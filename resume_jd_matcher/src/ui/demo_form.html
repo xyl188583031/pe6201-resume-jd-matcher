@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Simulated recruitment form - prototype</title>
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --panel: #ffffff;
+    --border: #dfe3e8;
+    --text: #1c2430;
+    --muted: #66717f;
+    --accent: #1f6feb;
+    --warn-bg: #fff8e6;
+    --warn-border: #e6b800;
+    --ok-bg: #eef6ff;
+    --danger-bg: #fdecec;
+    --danger-border: #d9534f;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 16px;
+    font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg); color: var(--text);
+  }
+  .banner {
+    background: var(--warn-bg); border: 1px solid var(--warn-border);
+    border-radius: 6px; padding: 10px 12px; margin-bottom: 14px; font-size: 13px;
+  }
+  .banner strong { display: block; margin-bottom: 2px; }
+  .panel {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 8px; padding: 16px; max-width: 720px;
+  }
+  h1 { font-size: 16px; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 12px; margin-bottom: 14px; }
+  .field { margin-bottom: 12px; }
+  .field label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+  .field .req { color: var(--danger-border); }
+  .row { display: flex; gap: 8px; align-items: stretch; }
+  input[type="text"] {
+    flex: 1; padding: 8px 10px; border: 1px solid var(--border); border-radius: 5px;
+    font: inherit; background: #fff; color: var(--text);
+  }
+  input[type="text"]:focus { outline: 2px solid var(--accent); outline-offset: -1px; border-color: var(--accent); }
+  input[type="text"].filled { background: #f0f7f0; border-color: #7cb87c; }
+  button {
+    font: inherit; padding: 8px 12px; border-radius: 5px; border: 1px solid var(--border);
+    background: #fff; color: var(--text); cursor: pointer; white-space: nowrap;
+  }
+  button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  button:disabled { opacity: .45; cursor: not-allowed; }
+  .suggest {
+    margin-top: 6px; border: 1px solid var(--border); border-left: 3px solid var(--accent);
+    border-radius: 5px; padding: 10px; background: var(--ok-bg); display: none;
+  }
+  .suggest.open { display: block; }
+  .suggest .why { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+  .badge {
+    display: inline-block; font-size: 11px; padding: 1px 6px; border-radius: 10px;
+    background: #e8eef7; color: #33506e; font-family: var(--mono);
+  }
+  .abstain {
+    margin-top: 6px; border: 1px solid var(--danger-border); background: var(--danger-bg);
+    border-radius: 5px; padding: 8px 10px; font-size: 12px;
+  }
+  .toolbar { margin-top: 16px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .status { font-size: 12px; color: var(--muted); }
+  details { margin-top: 14px; font-size: 12px; color: var(--muted); }
+  code { font-family: var(--mono); }
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <strong>Prototype - not for live sites.</strong>
+  Simulated form. Nothing is submitted, and nothing is stored. Values are AI <em>suggestions</em>
+  taken from synthetic data; click a field to review a suggestion, then click Fill to accept it.
+</div>
+
+<div class="panel">
+  <h1 id="form-title">Application form</h1>
+  <div class="sub" id="form-sub">Candidates are asked to complete every required field.</div>
+  <div id="fields"></div>
+  <div class="toolbar">
+    <button class="primary" id="fill-all">Fill all suggested fields</button>
+    <button id="clear-all">Clear form</button>
+    <span class="status" id="status"></span>
+  </div>
+  <details>
+    <summary>How this demo behaves</summary>
+    <p>
+      Each field carries its own confidence. A field below the abstention threshold is withheld and
+      shows a warning instead of a value - one uncertain field does not blank the rest of the form.
+      Nothing is written into the form until you click Fill, which is the human-in-the-loop
+      requirement from section 8 of the Problem Statement.
+    </p>
+  </details>
+</div>
+
+<script>
+// Substituted by the Streamlit app. The fallback keeps the file openable on its
+// own, so the demo can be shown without the whole pipeline running.
+const PAYLOAD = __PAYLOAD__;
+const FALLBACK = {
+  form: "simulated_recruitment_form",
+  title: "Application form",
+  subtitle: "Suggestions generated from synthetic data.",
+  fields: [
+    {name:"full_name", label:"Full name", required:true, is_list:false, status:"suggested", value:"Tan Wei Ling", confidence:0.95, reason:"suggested - click to accept and edit"},
+    {name:"email", label:"Email address", required:true, is_list:false, status:"suggested", value:"tan.weiling@example.edu", confidence:0.95, reason:"suggested - click to accept and edit"},
+    {name:"phone", label:"Contact number", required:false, is_list:false, status:"empty", value:"", confidence:0.0, reason:"not present in the source data - left blank on purpose"},
+    {name:"education_school", label:"University / institution", required:true, is_list:false, status:"abstained", value:"", confidence:0.20, reason:"field confidence 0.20 < 0.40; withheld rather than guessed"},
+    {name:"top_skills", label:"Top skills (comma separated)", required:true, is_list:true, status:"suggested", value:"Python, PyTorch, SQL", confidence:0.70, reason:"suggested - click to accept and edit"}
+  ]
+};
+
+const data = (PAYLOAD && PAYLOAD.fields && PAYLOAD.fields.length) ? PAYLOAD : FALLBACK;
+
+document.getElementById('form-title').textContent = data.title || 'Application form';
+document.getElementById('form-sub').textContent =
+  data.subtitle || 'Values below are suggestions and are not submitted anywhere.';
+
+const container = document.getElementById('fields');
+const state = {};
+data.fields.forEach((f, i) => {
+  const wrap = document.createElement('div');
+  wrap.className = 'field';
+
+  const label = document.createElement('label');
+  label.textContent = f.label || f.name;
+  if (f.required) {
+    const req = document.createElement('span');
+    req.className = 'req';
+    req.textContent = ' *';
+    label.appendChild(req);
+  }
+
+  const row = document.createElement('div');
+  row.className = 'row';
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.id = 'in-' + f.name;
+  input.placeholder = f.status === 'abstained' ? 'withheld - see note below' : 'not provided';
+  input.disabled = (f.status === 'abstained');
+  input.addEventListener('click', () => toggleSuggest(i, true));
+
+  row.appendChild(input);
+
+  if (f.status === 'suggested') {
+    const peek = document.createElement('button');
+    peek.type = 'button';
+    peek.textContent = 'Suggest';
+    peek.addEventListener('click', () => toggleSuggest(i));
+    row.appendChild(peek);
+  }
+
+  wrap.appendChild(label);
+  wrap.appendChild(row);
+
+  if (f.status === 'suggested') {
+    const box = document.createElement('div');
+    box.className = 'suggest';
+    box.id = 'sg-' + f.name;
+
+    const why = document.createElement('div');
+    why.className = 'why';
+    why.textContent = (f.reason || '') + '  ';
+
+    const badge = document.createElement('span');
+    badge.className = 'badge';
+    badge.textContent = 'confidence ' + Number(f.confidence || 0).toFixed(2);
+    why.appendChild(badge);
+
+    const inner = document.createElement('div');
+    inner.className = 'row';
+
+    const edit = document.createElement('input');
+    edit.type = 'text';
+    edit.value = f.value || '';
+    edit.id = 'edit-' + f.name;
+
+    const fill = document.createElement('button');
+    fill.type = 'button';
+    fill.className = 'primary';
+    fill.textContent = 'Fill';
+    fill.addEventListener('click', () => {
+      input.value = edit.value;
+      input.classList.add('filled');
+      box.classList.remove('open');
+      setStatus('Filled "' + (f.label || f.name) + '" from a suggestion.');
+    });
+
+    inner.appendChild(edit);
+    inner.appendChild(fill);
+    box.appendChild(why);
+    box.appendChild(inner);
+    wrap.appendChild(box);
+  }
+
+  if (f.status === 'abstained') {
+    const note = document.createElement('div');
+    note.className = 'abstain';
+    note.textContent =
+      'System declined to suggest a value for this field. ' + (f.reason || '');
+    wrap.appendChild(note);
+  }
+
+  if (f.status === 'empty') {
+    const note = document.createElement('div');
+    note.className = 'why';
+    note.style.cssText = 'font-size:11px;color:#66717f;margin-top:4px';
+    note.textContent = f.reason || 'left blank on purpose';
+    wrap.appendChild(note);
+  }
+
+  container.appendChild(wrap);
+  state[f.name] = {field: f, input: input, box: document.getElementById('sg-' + f.name)};
+});
+
+function toggleSuggest(i, onlyOpen) {
+  const f = data.fields[i];
+  const entry = state[f.name];
+  if (!entry || !entry.box) return;
+  const isOpen = entry.box.classList.contains('open');
+  document.querySelectorAll('.suggest.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) entry.box.classList.add('open');
+}
+
+function setStatus(message) {
+  document.getElementById('status').textContent = message;
+}
+
+document.getElementById('fill-all').addEventListener('click', () => {
+  let n = 0;
+  Object.values(state).forEach(entry => {
+    if (entry.field.status !== 'suggested') return;
+    entry.input.value = entry.field.value || '';
+    entry.input.classList.add('filled');
+    if (entry.box) entry.box.classList.remove('open');
+    n += 1;
+  });
+  setStatus(n ? ('Filled ' + n + ' field(s) from suggestions.') : 'Nothing to fill.');
+});
+
+document.getElementById('clear-all').addEventListener('click', () => {
+  Object.values(state).forEach(entry => {
+    entry.input.value = '';
+    entry.input.classList.remove('filled');
+  });
+  setStatus('Form cleared.');
+});
+
+const withheld = data.fields.filter(f => f.status === 'abstained').length;
+if (withheld) {
+  setStatus(withheld + ' field(s) withheld below the confidence threshold.');
+}
+</script>
+</body>
+</html>

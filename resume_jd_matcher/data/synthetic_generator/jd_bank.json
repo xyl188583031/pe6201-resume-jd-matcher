@@ -1,0 +1,201 @@
+{
+  "meta": {
+    "purpose": "Job-description bank for synthetic test-case generation",
+    "problem_statement": "PS section 6: the test data is fully synthetic; the generation script is committed, and ground-truth labels are fixed in a CSV before any model inference runs.",
+    "why_implied_skills_exist": "A ground truth built only from skills that appear literally in the JD would be satisfied by literal keyword matching, so condition A would score 100% coverage and the metric would measure nothing. Each responsibility therefore declares the canonical skill it IMPLIES but does not name. Ground truth = named skills UNION implied skills. Conditions B/C can recover the implied half; condition A structurally cannot. That gap IS the lexical-versus-semantic claim being tested.",
+    "invariant": "A skill declared under `implies` must NOT appear literally anywhere in the JD text. data/synthetic_generator/generate_cases.py asserts this and fails the build if it is violated.",
+    "usage": "Variants are sorted by named_count; candidate profiles are sorted by strength. Pairing the two orders produces a controlled spread of requirement overlap, including deliberate below-50% hard cases.",
+    "privacy": "Contains no personal data. All candidate names, emails and phone numbers in profiles.json are fabricated; email domains use the RFC 2606 reserved example.com/example.edu."
+  },
+
+  "display": {
+    "Python": "Python",
+    "Java": "Java",
+    "JavaScript": "JavaScript",
+    "TypeScript": "TypeScript",
+    "C++": "C++",
+    "C#": "C#",
+    "Go": "golang",
+    "SQL": "SQL",
+    "Bash": "shell scripting",
+    "Git": "Git",
+    "Linux": "Linux",
+    "Docker": "Docker",
+    "Kubernetes": "Kubernetes",
+    "CI/CD": "CI/CD",
+    "REST APIs": "REST APIs",
+    "Microservices": "microservices",
+    "Unit Testing": "unit testing",
+    "Agile": "Agile",
+    "Pandas": "pandas",
+    "NumPy": "NumPy",
+    "Data Cleaning": "data cleaning",
+    "Data Visualisation": "data visualisation",
+    "Statistics": "statistics",
+    "A/B Testing": "A/B testing",
+    "Excel": "Excel",
+    "ETL": "ETL",
+    "BigQuery": "BigQuery",
+    "Snowflake": "Snowflake",
+    "Dashboarding": "dashboarding",
+    "Machine Learning": "machine learning",
+    "Deep Learning": "deep learning",
+    "PyTorch": "PyTorch",
+    "TensorFlow": "TensorFlow",
+    "scikit-learn": "scikit-learn",
+    "NLP": "natural language processing (NLP)",
+    "Computer Vision": "computer vision",
+    "LLM": "large language models (LLM)",
+    "RAG": "retrieval augmented generation (RAG)",
+    "Prompt Engineering": "prompt engineering",
+    "Vector Database": "vector database",
+    "MLOps": "MLOps",
+    "Feature Engineering": "feature engineering",
+    "Model Evaluation": "model evaluation",
+    "Hugging Face": "Hugging Face",
+    "Product Roadmap": "product roadmap",
+    "User Research": "user research",
+    "Wireframing": "wireframing",
+    "Backlog Grooming": "backlog grooming",
+    "Stakeholder Management": "stakeholder management",
+    "Market Analysis": "market analysis",
+    "Product Metrics": "product metrics",
+    "Jira": "Jira"
+  },
+
+  "variants": [
+    { "key": "v01_sparse_terse",    "named_count": 5,  "responsibility_count": 5, "tone": "terse",          "length": "short",  "skill_density": "low" },
+    { "key": "v02_sparse_formal",   "named_count": 5,  "responsibility_count": 3, "tone": "formal",         "length": "short",  "skill_density": "low" },
+    { "key": "v03_sparse_plain",    "named_count": 6,  "responsibility_count": 5, "tone": "terse",          "length": "medium", "skill_density": "low" },
+    { "key": "v04_sparse_verbose",  "named_count": 6,  "responsibility_count": 4, "tone": "verbose",        "length": "long",   "skill_density": "low" },
+    { "key": "v05_medium_plain",    "named_count": 8,  "responsibility_count": 4, "tone": "conversational", "length": "medium", "skill_density": "medium" },
+    { "key": "v06_medium_formal",   "named_count": 8,  "responsibility_count": 3, "tone": "formal",         "length": "medium", "skill_density": "medium" },
+    { "key": "v07_medium_verbose",  "named_count": 9,  "responsibility_count": 5, "tone": "verbose",        "length": "long",   "skill_density": "medium" },
+    { "key": "v08_dense_terse",     "named_count": 10, "responsibility_count": 4, "tone": "terse",          "length": "medium", "skill_density": "high" },
+    { "key": "v09_dense_formal",    "named_count": 12, "responsibility_count": 5, "tone": "formal",         "length": "long",   "skill_density": "high" },
+    { "key": "v10_dense_plain",     "named_count": 12, "responsibility_count": 3, "tone": "conversational", "length": "medium", "skill_density": "high" }
+  ],
+
+  "render_tones": {
+    "terse": {
+      "opening": "{company} is hiring a {title} for our {team} team.",
+      "requirement_lead": "Requirements:",
+      "closing": "Send your resume and one line on the most relevant thing you have built."
+    },
+    "formal": {
+      "opening": "{company} seeks to appoint a {title} within the {team} function. The successful candidate will work alongside senior practitioners and will be expected to demonstrate the following competencies.",
+      "requirement_lead": "Essential requirements are as follows:",
+      "closing": "Remuneration is commensurate with experience. Shortlisted applicants will be contacted within ten working days."
+    },
+    "conversational": {
+      "opening": "We are a small {team} team at {company} and we need a {title} who is comfortable saying what is not working yet.",
+      "requirement_lead": "Here is what we actually need you to be good at:",
+      "closing": "If that sounds like you, send your resume. We read every one."
+    },
+    "verbose": {
+      "opening": "{company} is a fast-growing organisation operating across the region, and we are currently looking to expand our {team} team with a talented and motivated {title} who is eager to develop their career in a supportive and high-performing environment.",
+      "requirement_lead": "The role will require the following skills and attributes, which we consider essential for success in this position:",
+      "closing": "We look forward to receiving your application and will be in touch regarding next steps should your profile match our requirements for this position."
+    }
+  },
+
+  "companies": [
+    "Meridian Labs", "Northwind Digital", "Harbourline Systems", "Aureate Analytics",
+    "Kestrel Software", "Brightwater Tech", "Sentinel Data", "Lumen Products"
+  ],
+  "teams": ["applied AI", "platform", "growth", "payments", "core infrastructure", "insights"],
+
+  "families": {
+    "AI/ML": {
+      "titles": [
+        "AI Engineer (Graduate)", "Machine Learning Engineer", "Applied Scientist",
+        "Computer Vision Engineer", "NLP Engineer"
+      ],
+      "context": "Our applied AI team ships models into products used by real customers, so we care as much about evaluation and monitoring as about training.",
+      "core_skills": [
+        "Python", "Machine Learning", "Deep Learning", "PyTorch", "TensorFlow",
+        "scikit-learn", "NLP", "MLOps", "Feature Engineering", "Model Evaluation",
+        "Hugging Face", "SQL"
+      ],
+      "nice_to_have": ["Docker", "Git", "Pandas", "RAG", "LLM", "Vector Database", "Prompt Engineering"],
+      "responsibilities": [
+        { "text": "Prepare the raw rows and document what you excluded and why", "implies": ["Data Cleaning"] },
+        { "text": "Compare candidate approaches against a stated metric instead of shipping the first one that works", "implies": ["Model Evaluation"] },
+        { "text": "Write experiment code that another engineer can re-run and get the same numbers", "implies": ["Git"] },
+        { "text": "Put a trained artifact behind a service other teams can call", "implies": ["MLOps"] },
+        { "text": "Explain the limits of a result to non-specialist colleagues in plain language", "implies": [] },
+        { "text": "Turn raw columns into inputs a model can actually use", "implies": ["Feature Engineering"] },
+        { "text": "Keep a container image so the environment is reproducible for everyone", "implies": ["Docker"] }
+      ]
+    },
+
+    "Software Engineering": {
+      "titles": [
+        "Software Engineer (Graduate)", "Backend Engineer", "Full Stack Developer",
+        "Platform Engineer", "Associate Software Engineer"
+      ],
+      "context": "You will work in a small product team where engineers own their code from pull request through to production monitoring.",
+      "core_skills": [
+        "Python", "Java", "JavaScript", "TypeScript", "Git", "Docker",
+        "Kubernetes", "CI/CD", "REST APIs", "Unit Testing", "SQL", "Microservices"
+      ],
+      "nice_to_have": ["Bash", "Linux", "Agile", "Go", "C#", "C++"],
+      "responsibilities": [
+        { "text": "Design and implement service endpoints that other teams consume over HTTP", "implies": ["REST APIs"] },
+        { "text": "Write a failing check that reproduces a defect before you fix it", "implies": ["Unit Testing"] },
+        { "text": "Review changes from teammates and give feedback that improves them", "implies": [] },
+        { "text": "Operate what you build, including responding to the alerts you configured", "implies": [] },
+        { "text": "Break a feature into small increments that can ship independently", "implies": [] },
+        { "text": "Automate the checks that run on every push so a bad change cannot merge", "implies": ["CI/CD"] },
+        { "text": "Split a growing application into independently deployable parts when one codebase stops scaling for the team", "implies": ["Microservices"] },
+        { "text": "Query the application data store directly when investigating an issue", "implies": ["SQL"] }
+      ]
+    },
+
+    "Data Analytics": {
+      "titles": [
+        "Data Analyst (Graduate)", "Business Intelligence Analyst", "Analytics Engineer",
+        "Marketing Data Analyst", "Product Analyst"
+      ],
+      "context": "You will be the person other teams come to for a number they can defend, which means your working files need to be readable by someone else.",
+      "core_skills": [
+        "SQL", "Python", "Pandas", "NumPy", "Data Cleaning", "Data Visualisation",
+        "Statistics", "A/B Testing", "Excel", "ETL", "Dashboarding", "BigQuery"
+      ],
+      "nice_to_have": ["Snowflake", "Machine Learning", "scikit-learn", "Git"],
+      "responsibilities": [
+        { "text": "Turn a vague business question into a measurable definition", "implies": ["Product Metrics"] },
+        { "text": "Build and maintain views that the business opens every morning", "implies": ["Dashboarding"] },
+        { "text": "Work out whether a movement is real or just noise before reporting it", "implies": ["Statistics"] },
+        { "text": "Design a randomised comparison and read it out without stopping early", "implies": ["A/B Testing"] },
+        { "text": "Move recurring reporting off manual file edits and onto a scheduled job", "implies": ["ETL"] },
+        { "text": "Reason about the correctness of your own aggregations and window logic", "implies": [] },
+        { "text": "Present a finding to a non-technical audience in two sentences, caveats included", "implies": [] }
+      ]
+    },
+
+    "Product Management": {
+      "titles": [
+        "Associate Product Manager", "Product Manager (Graduate Programme)",
+        "Product Owner", "Associate Product Analyst", "Junior Product Manager"
+      ],
+      "context": "You will own a small surface area end to end, working with engineering and design, and you will be expected to say what you chose not to build.",
+      "core_skills": [
+        "Product Roadmap", "User Research", "Wireframing", "Backlog Grooming",
+        "Stakeholder Management", "Market Analysis", "Product Metrics", "Jira",
+        "Agile", "SQL", "Excel", "Data Visualisation"
+      ],
+      "nice_to_have": ["A/B Testing", "Python", "Statistics"],
+      "responsibilities": [
+        { "text": "Articulate the user problem before anyone proposes a solution", "implies": [] },
+        { "text": "Talk to users without leading them toward the answer you want", "implies": ["User Research"] },
+        { "text": "Sketch the shape of a screen before engineering commits to building it", "implies": ["Wireframing"] },
+        { "text": "Order the work and explain what you deliberately deferred this cycle", "implies": ["Backlog Grooming"] },
+        { "text": "Decide the one number a change is meant to move, plus the guardrails", "implies": ["Product Metrics"] },
+        { "text": "Surface a disagreement early and arrive with a recommendation, not a problem statement", "implies": ["Stakeholder Management"] },
+        { "text": "Track work items and their status in a shared tracker the whole team can read", "implies": ["Jira"] },
+        { "text": "Compare what we offer against what a user would otherwise do, including nothing", "implies": ["Market Analysis"] }
+      ]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+Harbourline Systems is hiring a Applied Scientist for our growth team.
+
+About the role
+Our applied AI team ships models into products used by real customers, so we care as much about evaluation and monitoring as about training.
+
+Requirements:
+- Python
+- deep learning
+- scikit-learn
+- natural language processing (NLP)
+- MLOps
+- model evaluation
+
+What you will do
+- Explain the limits of a result to non-specialist colleagues in plain language
+- Write experiment code that another engineer can re-run and get the same numbers
+- Compare candidate approaches against a stated metric instead of shipping the first one that works
+- Keep a container image so the environment is reproducible for everyone
+- Prepare the raw rows and document what you excluded and why
+
+Send your resume and one line on the most relevant thing you have built.

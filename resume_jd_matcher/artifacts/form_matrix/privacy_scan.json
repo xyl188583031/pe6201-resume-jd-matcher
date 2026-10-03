@@ -1,0 +1,10 @@
+{
+  "sentinels": 78,
+  "artifact_files_scanned": 3,
+  "artifact_hits": [],
+  "temp_files_scanned": 0,
+  "temp_hits": [],
+  "action_log_created": false,
+  "chrome_storage_local": "not_scanned_outside_a_browser",
+  "temp_dir": "D:\\NTU\\pe6201\\individual project\\resume_jd_matcher\\artifacts\\form_matrix\\tmp_run"
+}

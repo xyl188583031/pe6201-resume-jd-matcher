@@ -1,0 +1,311 @@
+{
+  "meta": {
+    "purpose": "Synthetic candidate profiles for test-case generation",
+    "problem_statement": "PS section 6: test data is fully synthetic; no real candidate resumes; inputs processed in-memory only.",
+    "privacy": "Every name, email address and phone number here is fabricated. Email domains use the RFC 2606 reserved example.com / example.edu, which cannot receive mail. No entry corresponds to a real person.",
+    "strength_ordering": "Profiles are listed strongest first. `core_skills` is an explicit subset of the family's core_skills list in jd_bank.json; `extra_skills` are additional skills evidenced elsewhere on the resume. The generator pairs profiles against JD variants in this order to produce a controlled spread of requirement overlap.",
+    "rendering": "data/synthetic_generator/generate_cases.py renders these into resume text and ASSERTS that the literal skills recoverable from the rendered text are exactly core_skills U extra_skills. A resume that leaks an extra skill would corrupt the fabrication ground truth."
+  },
+
+  "schools": [
+    "Nanyang Technological University",
+    "National University of Singapore",
+    "Singapore Management University",
+    "Singapore Institute of Technology"
+  ],
+
+  "profiles": {
+    "AI/ML": [
+      { "id": "aiml_p00", "full_name": "Tan Wei Ling", "email": "tan.weiling@example.edu", "phone": "+65 9123 4500", "school": "Nanyang Technological University", "degree": "MSc", "degree_long": "Master of Science", "major": "Artificial Intelligence", "graduation_year": "2027",
+        "core_skills": ["Python", "Machine Learning", "Deep Learning", "PyTorch", "TensorFlow", "scikit-learn", "NLP", "MLOps", "Feature Engineering", "Model Evaluation", "SQL"],
+        "extra_skills": ["Git", "Docker", "Pandas"],
+        "experience": [
+          { "employer": "Sentinel Data", "title": "Machine Learning Intern", "dates": "May 2025 - Aug 2025", "focus": ["Python", "PyTorch", "MLOps"] },
+          { "employer": "University Research Lab", "title": "Student Researcher", "dates": "Jan 2025 - Apr 2025", "focus": ["NLP", "Model Evaluation"] }
+        ] },
+
+      { "id": "aiml_p01", "full_name": "Arun Prakash", "email": "arun.prakash@example.edu", "phone": "+65 9123 4501", "school": "National University of Singapore", "degree": "MSc", "degree_long": "Master of Science", "major": "Computer Science", "graduation_year": "2027",
+        "core_skills": ["Python", "Machine Learning", "Deep Learning", "PyTorch", "scikit-learn", "NLP", "MLOps", "Feature Engineering", "Model Evaluation", "SQL"],
+        "extra_skills": ["Git", "Pandas", "NumPy"],
+        "experience": [
+          { "employer": "Aureate Analytics", "title": "Data Science Intern", "dates": "May 2025 - Jul 2025", "focus": ["Python", "Machine Learning", "SQL"] },
+          { "employer": "Coursework Capstone", "title": "Project Lead", "dates": "Aug 2024 - Dec 2024", "focus": ["PyTorch", "Model Evaluation"] }
+        ] },
+
+      { "id": "aiml_p02", "full_name": "Ng Hui Min", "email": "ng.huimin@example.edu", "phone": "+65 9123 4502", "school": "Singapore Management University", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Information Systems", "graduation_year": "2026",
+        "core_skills": ["Python", "Machine Learning", "Deep Learning", "PyTorch", "scikit-learn", "NLP", "MLOps", "Model Evaluation", "SQL"],
+        "extra_skills": ["Git", "Pandas"],
+        "experience": [
+          { "employer": "Brightwater Tech", "title": "AI Intern", "dates": "May 2025 - Aug 2025", "focus": ["Python", "NLP", "MLOps"] }
+        ] },
+
+      { "id": "aiml_p03", "full_name": "Siti Nurhaliza", "email": "siti.nurhaliza@example.edu", "phone": "+65 9123 4503", "school": "Nanyang Technological University", "degree": "MSc", "degree_long": "Master of Science", "major": "Data Science", "graduation_year": "2027",
+        "core_skills": ["Python", "Machine Learning", "Deep Learning", "PyTorch", "scikit-learn", "NLP", "Model Evaluation", "SQL"],
+        "extra_skills": ["Pandas", "NumPy", "Git"],
+        "experience": [
+          { "employer": "Meridian Labs", "title": "Research Assistant", "dates": "Aug 2024 - Dec 2024", "focus": ["PyTorch", "Model Evaluation"] }
+        ] },
+
+      { "id": "aiml_p04", "full_name": "Koh Jia Hao", "email": "koh.jiahao@example.edu", "phone": "+65 9123 4504", "school": "Singapore Institute of Technology", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Computer Science", "graduation_year": "2026",
+        "core_skills": ["Python", "Machine Learning", "Deep Learning", "PyTorch", "NLP", "Model Evaluation", "SQL"],
+        "extra_skills": ["Git", "Pandas"],
+        "experience": [
+          { "employer": "Kestrel Software", "title": "Software Intern", "dates": "May 2025 - Aug 2025", "focus": ["Python", "SQL"] }
+        ] },
+
+      { "id": "aiml_p05", "full_name": "Lim Xin Yi", "email": "lim.xinyi@example.edu", "phone": "+65 9123 4505", "school": "Nanyang Technological University", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Computer Engineering", "graduation_year": "2026",
+        "core_skills": ["Python", "Machine Learning", "PyTorch", "NLP", "Feature Engineering", "SQL"],
+        "extra_skills": ["Git"],
+        "experience": [
+          { "employer": "Coursework Project", "title": "Team Member", "dates": "Jan 2025 - May 2025", "focus": ["Python", "Machine Learning"] }
+        ] },
+
+      { "id": "aiml_p06", "full_name": "Daniel Oh", "email": "daniel.oh@example.edu", "phone": "+65 9123 4506", "school": "National University of Singapore", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Statistics", "graduation_year": "2026",
+        "core_skills": ["Python", "Machine Learning", "PyTorch", "scikit-learn", "SQL"],
+        "extra_skills": ["Statistics", "Pandas"],
+        "experience": [
+          { "employer": "Harbourline Systems", "title": "Analytics Intern", "dates": "May 2025 - Jul 2025", "focus": ["Python", "SQL"] }
+        ] },
+
+      { "id": "aiml_p07", "full_name": "Priya Raman", "email": "priya.raman@example.edu", "phone": "+65 9123 4507", "school": "Singapore Management University", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Business Analytics", "graduation_year": "2026",
+        "core_skills": ["Python", "Machine Learning", "scikit-learn", "SQL"],
+        "extra_skills": ["Excel", "Statistics"],
+        "experience": [
+          { "employer": "Lumen Products", "title": "Business Analyst Intern", "dates": "May 2025 - Aug 2025", "focus": ["SQL", "Excel"] }
+        ] },
+
+      { "id": "aiml_p08", "full_name": "Goh Shu Ting", "email": "goh.shuting@example.edu", "phone": "+65 9123 4508", "school": "Singapore Institute of Technology", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Information Systems", "graduation_year": "2026",
+        "core_skills": ["Python", "Machine Learning", "SQL"],
+        "extra_skills": ["Excel", "Agile"],
+        "experience": [
+          { "employer": "Northwind Digital", "title": "IT Support Intern", "dates": "May 2025 - Jul 2025", "focus": ["SQL", "Excel"] }
+        ] },
+
+      { "id": "aiml_p09", "full_name": "Chen Yu Han", "email": "chen.yuhan@example.edu", "phone": "+65 9123 4509", "school": "Nanyang Technological University", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Mathematics", "graduation_year": "2026",
+        "core_skills": ["Python", "SQL"],
+        "extra_skills": ["Excel"],
+        "experience": [
+          { "employer": "University Teaching Lab", "title": "Teaching Assistant", "dates": "Aug 2024 - Dec 2024", "focus": ["Python"] }
+        ] }
+    ],
+
+    "Software Engineering": [
+      { "id": "se_p00", "full_name": "Wong Kai Xin", "email": "wong.kaixin@example.edu", "phone": "+65 9124 4600", "school": "Nanyang Technological University", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Computer Science", "graduation_year": "2026",
+        "core_skills": ["Python", "Java", "JavaScript", "TypeScript", "Git", "Docker", "Kubernetes", "CI/CD", "REST APIs", "Unit Testing", "SQL"],
+        "extra_skills": ["Bash", "Linux", "Agile"],
+        "experience": [
+          { "employer": "Kestrel Software", "title": "Software Engineering Intern", "dates": "May 2025 - Aug 2025", "focus": ["TypeScript", "Docker", "CI/CD"] },
+          { "employer": "Coursework Project", "title": "Backend Developer", "dates": "Jan 2025 - Apr 2025", "focus": ["Python", "REST APIs", "Unit Testing"] }
+        ] },
+
+      { "id": "se_p01", "full_name": "Nurul Aisyah", "email": "nurul.aisyah@example.edu", "phone": "+65 9124 4601", "school": "National University of Singapore", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Computer Science", "graduation_year": "2026",
+        "core_skills": ["Python", "Java", "JavaScript", "Git", "Docker", "Kubernetes", "CI/CD", "REST APIs", "Unit Testing", "SQL"],
+        "extra_skills": ["Linux", "Bash"],
+        "experience": [
+          { "employer": "Northwind Digital", "title": "Backend Intern", "dates": "May 2025 - Jul 2025", "focus": ["Java", "Docker", "Unit Testing"] }
+        ] },
+
+      { "id": "se_p02", "full_name": "Lee Zhong Wei", "email": "lee.zhongwei@example.edu", "phone": "+65 9124 4602", "school": "Singapore Management University", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Information Systems", "graduation_year": "2026",
+        "core_skills": ["Python", "JavaScript", "TypeScript", "Git", "Docker", "REST APIs", "Unit Testing", "SQL", "CI/CD"],
+        "extra_skills": ["Agile"],
+        "experience": [
+          { "employer": "Brightwater Tech", "title": "Web Developer Intern", "dates": "May 2025 - Aug 2025", "focus": ["JavaScript", "REST APIs"] }
+        ] },
+
+      { "id": "se_p03", "full_name": "Ravi Kumar", "email": "ravi.kumar@example.edu", "phone": "+65 9124 4603", "school": "Nanyang Technological University", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Computer Engineering", "graduation_year": "2026",
+        "core_skills": ["Python", "Java", "Git", "Docker", "REST APIs", "Unit Testing", "SQL", "CI/CD"],
+        "extra_skills": ["Linux"],
+        "experience": [
+          { "employer": "Sentinel Data", "title": "QA Intern", "dates": "May 2025 - Jul 2025", "focus": ["Unit Testing", "SQL"] }
+        ] },
+
+      { "id": "se_p04", "full_name": "Chua Mei Ling", "email": "chua.meiling@example.edu", "phone": "+65 9124 4604", "school": "Singapore Institute of Technology", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Software Engineering", "graduation_year": "2026",
+        "core_skills": ["Python", "JavaScript", "Git", "Docker", "REST APIs", "Unit Testing", "SQL"],
+        "extra_skills": ["Agile"],
+        "experience": [
+          { "employer": "Lumen Products", "title": "Junior Developer", "dates": "May 2025 - Aug 2025", "focus": ["Python", "REST APIs"] }
+        ] },
+
+      { "id": "se_p05", "full_name": "Ibrahim Hassan", "email": "ibrahim.hassan@example.edu", "phone": "+65 9124 4605", "school": "Nanyang Technological University", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Computer Science", "graduation_year": "2026",
+        "core_skills": ["Python", "Java", "Git", "REST APIs", "Unit Testing", "SQL"],
+        "extra_skills": ["Agile"],
+        "experience": [
+          { "employer": "Coursework Project", "title": "Developer", "dates": "Aug 2024 - Dec 2024", "focus": ["Java", "Unit Testing"] }
+        ] },
+
+      { "id": "se_p06", "full_name": "Yeo Wen Jun", "email": "yeo.wenjun@example.edu", "phone": "+65 9124 4606", "school": "National University of Singapore", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Information Systems", "graduation_year": "2026",
+        "core_skills": ["Python", "JavaScript", "Git", "REST APIs", "SQL"],
+        "extra_skills": ["Excel"],
+        "experience": [
+          { "employer": "Meridian Labs", "title": "Automation Intern", "dates": "May 2025 - Jul 2025", "focus": ["Python"] }
+        ] },
+
+      { "id": "se_p07", "full_name": "Farah Tan", "email": "farah.tan@example.edu", "phone": "+65 9124 4607", "school": "Singapore Management University", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Computer Science", "graduation_year": "2026",
+        "core_skills": ["Python", "Git", "REST APIs", "SQL"],
+        "extra_skills": ["Agile", "Excel"],
+        "experience": [
+          { "employer": "Harbourline Systems", "title": "Support Engineer Intern", "dates": "May 2025 - Aug 2025", "focus": ["Python", "SQL"] }
+        ] },
+
+      { "id": "se_p08", "full_name": "Teo Yan Ling", "email": "teo.yanling@example.edu", "phone": "+65 9124 4608", "school": "Singapore Institute of Technology", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Information Systems", "graduation_year": "2026",
+        "core_skills": ["Python", "Git", "SQL"],
+        "extra_skills": ["Excel", "Agile"],
+        "experience": [
+          { "employer": "Brightwater Tech", "title": "IT Intern", "dates": "May 2025 - Jul 2025", "focus": ["SQL"] }
+        ] },
+
+      { "id": "se_p09", "full_name": "Suresh Menon", "email": "suresh.menon@example.edu", "phone": "+65 9124 4609", "school": "Nanyang Technological University", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Electrical Engineering", "graduation_year": "2026",
+        "core_skills": ["Python", "SQL"],
+        "extra_skills": ["Excel"],
+        "experience": [
+          { "employer": "University Lab", "title": "Lab Assistant", "dates": "Aug 2024 - Dec 2024", "focus": ["Python"] }
+        ] }
+    ],
+
+    "Data Analytics": [
+      { "id": "da_p00", "full_name": "Ang Pei Shan", "email": "ang.peishan@example.edu", "phone": "+65 9125 4700", "school": "Nanyang Technological University", "degree": "MSc", "degree_long": "Master of Science", "major": "Business Analytics", "graduation_year": "2027",
+        "core_skills": ["SQL", "Python", "Pandas", "NumPy", "Data Cleaning", "Data Visualisation", "Statistics", "A/B Testing", "Excel", "ETL", "Dashboarding"],
+        "extra_skills": ["BigQuery", "Git", "Machine Learning"],
+        "experience": [
+          { "employer": "Aureate Analytics", "title": "Analytics Intern", "dates": "May 2025 - Aug 2025", "focus": ["SQL", "Dashboarding", "ETL"] },
+          { "employer": "Coursework Project", "title": "Analyst", "dates": "Jan 2025 - Apr 2025", "focus": ["Python", "Pandas", "Statistics"] }
+        ] },
+
+      { "id": "da_p01", "full_name": "Muhammad Faiz", "email": "muhammad.faiz@example.edu", "phone": "+65 9125 4701", "school": "National University of Singapore", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Statistics", "graduation_year": "2026",
+        "core_skills": ["SQL", "Python", "Pandas", "Data Cleaning", "Data Visualisation", "Statistics", "A/B Testing", "Excel", "ETL", "Dashboarding"],
+        "extra_skills": ["BigQuery", "Git"],
+        "experience": [
+          { "employer": "Sentinel Data", "title": "Data Analyst Intern", "dates": "May 2025 - Jul 2025", "focus": ["SQL", "Dashboarding"] }
+        ] },
+
+      { "id": "da_p02", "full_name": "Ho Li Wen", "email": "ho.liwen@example.edu", "phone": "+65 9125 4702", "school": "Singapore Management University", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Business Analytics", "graduation_year": "2026",
+        "core_skills": ["SQL", "Python", "Pandas", "Data Cleaning", "Data Visualisation", "Statistics", "Excel", "Dashboarding", "A/B Testing"],
+        "extra_skills": ["Excel", "BigQuery"],
+        "experience": [
+          { "employer": "Lumen Products", "title": "Marketing Analyst Intern", "dates": "May 2025 - Aug 2025", "focus": ["SQL", "Excel", "Statistics"] }
+        ] },
+
+      { "id": "da_p03", "full_name": "Kavitha Nair", "email": "kavitha.nair@example.edu", "phone": "+65 9125 4703", "school": "Nanyang Technological University", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Data Science", "graduation_year": "2026",
+        "core_skills": ["SQL", "Python", "Pandas", "Data Cleaning", "Statistics", "A/B Testing", "Excel", "Dashboarding"],
+        "extra_skills": ["NumPy", "Git"],
+        "experience": [
+          { "employer": "Meridian Labs", "title": "Analyst Intern", "dates": "May 2025 - Jul 2025", "focus": ["Python", "Pandas"] }
+        ] },
+
+      { "id": "da_p04", "full_name": "Sim Rui Qi", "email": "sim.ruiqi@example.edu", "phone": "+65 9125 4704", "school": "Singapore Institute of Technology", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Information Systems", "graduation_year": "2026",
+        "core_skills": ["SQL", "Python", "Data Cleaning", "Statistics", "Excel", "Dashboarding", "Data Visualisation"],
+        "extra_skills": ["Pandas"],
+        "experience": [
+          { "employer": "Northwind Digital", "title": "Reporting Intern", "dates": "May 2025 - Aug 2025", "focus": ["SQL", "Excel"] }
+        ] },
+
+      { "id": "da_p05", "full_name": "Tan Boon Kiat", "email": "tan.boonkiat@example.edu", "phone": "+65 9125 4705", "school": "National University of Singapore", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Economics", "graduation_year": "2026",
+        "core_skills": ["SQL", "Python", "Statistics", "Excel", "Data Cleaning"],
+        "extra_skills": ["Pandas"],
+        "experience": [
+          { "employer": "Kestrel Software", "title": "Operations Intern", "dates": "May 2025 - Jul 2025", "focus": ["Excel", "SQL"] }
+        ] },
+
+      { "id": "da_p06", "full_name": "Divya Suresh", "email": "divya.suresh@example.edu", "phone": "+65 9125 4706", "school": "Singapore Management University", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Marketing", "graduation_year": "2026",
+        "core_skills": ["SQL", "Excel", "Data Visualisation", "Statistics"],
+        "extra_skills": ["Dashboarding"],
+        "experience": [
+          { "employer": "Brightwater Tech", "title": "Marketing Intern", "dates": "May 2025 - Aug 2025", "focus": ["Excel", "SQL"] }
+        ] },
+
+      { "id": "da_p07", "full_name": "Loh Cheng Hui", "email": "loh.chenghui@example.edu", "phone": "+65 9125 4707", "school": "Nanyang Technological University", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Civil Engineering", "graduation_year": "2026",
+        "core_skills": ["SQL", "Excel", "Data Cleaning"],
+        "extra_skills": ["Statistics"],
+        "experience": [
+          { "employer": "Harbourline Systems", "title": "Site Intern", "dates": "May 2025 - Jul 2025", "focus": ["Excel"] }
+        ] },
+
+      { "id": "da_p08", "full_name": "Nadia Rahman", "email": "nadia.rahman@example.edu", "phone": "+65 9125 4708", "school": "Singapore Institute of Technology", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Hospitality Management", "graduation_year": "2026",
+        "core_skills": ["Excel", "SQL"],
+        "extra_skills": ["Agile"],
+        "experience": [
+          { "employer": "Lumen Products", "title": "Service Intern", "dates": "May 2025 - Aug 2025", "focus": ["Excel"] }
+        ] },
+
+      { "id": "da_p09", "full_name": "Ong Zhi Hao", "email": "ong.zhihoa@example.edu", "phone": "+65 9125 4709", "school": "Nanyang Technological University", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Mechanical Engineering", "graduation_year": "2026",
+        "core_skills": ["Excel", "SQL"],
+        "extra_skills": [],
+        "experience": [
+          { "employer": "University Workshop", "title": "Lab Assistant", "dates": "Aug 2024 - Dec 2024", "focus": ["Excel"] }
+        ] }
+    ],
+
+    "Product Management": [
+      { "id": "pm_p00", "full_name": "Chong Wan Ling", "email": "chong.wanling@example.edu", "phone": "+65 9126 4800", "school": "Nanyang Technological University", "degree": "MSc", "degree_long": "Master of Science", "major": "Information Systems", "graduation_year": "2027",
+        "core_skills": ["Product Roadmap", "User Research", "Wireframing", "Backlog Grooming", "Stakeholder Management", "Market Analysis", "Product Metrics", "Jira", "Agile", "SQL", "Data Visualisation"],
+        "extra_skills": ["Excel", "A/B Testing"],
+        "experience": [
+          { "employer": "Meridian Labs", "title": "Product Management Intern", "dates": "May 2025 - Aug 2025", "focus": ["User Research", "Backlog Grooming", "Product Metrics"] },
+          { "employer": "Coursework Project", "title": "Product Lead", "dates": "Jan 2025 - Apr 2025", "focus": ["Wireframing", "Product Roadmap"] }
+        ] },
+
+      { "id": "pm_p01", "full_name": "Ganesh Iyer", "email": "ganesh.iyer@example.edu", "phone": "+65 9126 4801", "school": "National University of Singapore", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Business Analytics", "graduation_year": "2026",
+        "core_skills": ["Product Roadmap", "User Research", "Wireframing", "Backlog Grooming", "Stakeholder Management", "Product Metrics", "Jira", "Agile", "SQL", "Data Visualisation"],
+        "extra_skills": ["Excel", "Statistics"],
+        "experience": [
+          { "employer": "Brightwater Tech", "title": "Associate Product Intern", "dates": "May 2025 - Jul 2025", "focus": ["User Research", "Product Metrics"] }
+        ] },
+
+      { "id": "pm_p02", "full_name": "Tan Serene", "email": "tan.serene@example.edu", "phone": "+65 9126 4802", "school": "Singapore Management University", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Marketing", "graduation_year": "2026",
+        "core_skills": ["Product Roadmap", "User Research", "Wireframing", "Backlog Grooming", "Product Metrics", "Jira", "Agile", "Market Analysis", "Data Visualisation"],
+        "extra_skills": ["Excel"],
+        "experience": [
+          { "employer": "Lumen Products", "title": "Product Intern", "dates": "May 2025 - Aug 2025", "focus": ["User Research", "Wireframing"] }
+        ] },
+
+      { "id": "pm_p03", "full_name": "Hafiz Osman", "email": "hafiz.osman@example.edu", "phone": "+65 9126 4803", "school": "Nanyang Technological University", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Information Systems", "graduation_year": "2026",
+        "core_skills": ["Product Roadmap", "User Research", "Backlog Grooming", "Stakeholder Management", "Product Metrics", "Jira", "Agile", "SQL"],
+        "extra_skills": ["Excel"],
+        "experience": [
+          { "employer": "Northwind Digital", "title": "Business Analyst Intern", "dates": "May 2025 - Jul 2025", "focus": ["Backlog Grooming", "SQL"] }
+        ] },
+
+      { "id": "pm_p04", "full_name": "Kwek Li Ting", "email": "kwek.liting@example.edu", "phone": "+65 9126 4804", "school": "Singapore Institute of Technology", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Business Information Systems", "graduation_year": "2026",
+        "core_skills": ["User Research", "Backlog Grooming", "Stakeholder Management", "Product Metrics", "Jira", "Agile", "Excel"],
+        "extra_skills": [],
+        "experience": [
+          { "employer": "Kestrel Software", "title": "Project Coordinator Intern", "dates": "May 2025 - Aug 2025", "focus": ["Jira", "Backlog Grooming"] }
+        ] },
+
+      { "id": "pm_p05", "full_name": "Shalini Devi", "email": "shalini.devi@example.edu", "phone": "+65 9126 4805", "school": "National University of Singapore", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Communications", "graduation_year": "2026",
+        "core_skills": ["User Research", "Stakeholder Management", "Product Metrics", "Agile", "Excel"],
+        "extra_skills": [],
+        "experience": [
+          { "employer": "Aureate Analytics", "title": "Marketing Intern", "dates": "May 2025 - Jul 2025", "focus": ["User Research"] }
+        ] },
+
+      { "id": "pm_p06", "full_name": "Chia Meng Hui", "email": "chia.menghui@example.edu", "phone": "+65 9126 4806", "school": "Singapore Management University", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Economics", "graduation_year": "2026",
+        "core_skills": ["Stakeholder Management", "Product Metrics", "Excel", "Agile"],
+        "extra_skills": ["Statistics"],
+        "experience": [
+          { "employer": "Harbourline Systems", "title": "Operations Intern", "dates": "May 2025 - Aug 2025", "focus": ["Excel"] }
+        ] },
+
+      { "id": "pm_p07", "full_name": "Rajesh Pillai", "email": "rajesh.pillai@example.edu", "phone": "+65 9126 4807", "school": "Nanyang Technological University", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Mechanical Engineering", "graduation_year": "2026",
+        "core_skills": ["Stakeholder Management", "Agile", "Excel"],
+        "extra_skills": [],
+        "experience": [
+          { "employer": "Sentinel Data", "title": "Engineer Intern", "dates": "May 2025 - Jul 2025", "focus": ["Excel"] }
+        ] },
+
+      { "id": "pm_p08", "full_name": "Yap Hui En", "email": "yap.huien@example.edu", "phone": "+65 9126 4808", "school": "Singapore Institute of Technology", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Hospitality Management", "graduation_year": "2026",
+        "core_skills": ["Stakeholder Management", "Excel"],
+        "extra_skills": [],
+        "experience": [
+          { "employer": "Lumen Products", "title": "Customer Service Intern", "dates": "May 2025 - Aug 2025", "focus": ["Excel"] }
+        ] },
+
+      { "id": "pm_p09", "full_name": "Bala Krishnan", "email": "bala.krishnan@example.edu", "phone": "+65 9126 4809", "school": "Nanyang Technological University", "degree": "BSc", "degree_long": "Bachelor of Science", "major": "Materials Engineering", "graduation_year": "2026",
+        "core_skills": ["Excel"],
+        "extra_skills": [],
+        "experience": [
+          { "employer": "University Lab", "title": "Lab Assistant", "dates": "Aug 2024 - Dec 2024", "focus": ["Excel"] }
+        ] }
+    ]
+  }
+}

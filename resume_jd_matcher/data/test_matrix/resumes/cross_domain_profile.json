@@ -1,0 +1,43 @@
+{
+  "resume_id": "cross_domain_profile",
+  "title": "Cross-domain profile - business analytics graduate against an AI/ML posting",
+  "purpose": "Exactly one of the named JD's four stated requirements is evidenced (Python), so skill overlap is 1/4 = 25%, which is the '~30% overlap' hard case. Only two canonical skills exist in the whole profile, which puts the extracted top_skills confidence at 0.35 - below the 0.4 abstention threshold - so the skills field must be withheld rather than guessed.",
+  "synthetic": true,
+  "authorised_modules": ["personal_info", "education", "internship", "projects"],
+  "profile": {
+    "personal_info": {
+      "full_name": "Nurul Hakim",
+      "email": "nurul.hakim@example.com",
+      "phone": "+65 8788 1200",
+      "location": "Singapore",
+      "linkedin": "linkedin.com/in/nurulhakim"
+    },
+    "education": [
+      {
+        "school": "Nanyang Technological University",
+        "degree": "Bachelor of Science",
+        "major": "Business Analytics",
+        "start": "2021",
+        "end": "2025"
+      }
+    ],
+    "internship": [
+      {
+        "employer": "Harbour Retail Group",
+        "title": "Operations Intern",
+        "start": "May 2024",
+        "end": "Jul 2024",
+        "summary": "Tracked monthly stock movements in Excel and wrote Python scripts to tidy legacy spreadsheets."
+      }
+    ],
+    "projects": [
+      {
+        "name": "Campus Pantry Redistribution",
+        "summary": "A volunteer logistics project: scheduled pickups and recorded weight logs in Excel."
+      }
+    ]
+  },
+  "declared_skills": ["Excel", "Python"],
+  "intentionally_absent": ["gpa"],
+  "notes": "No GPA is stated, so the GPA control must come back missing. Deliberately avoids the tokens SQL, statistics, machine learning and PyTorch so that skill overlap with jd_named stays at one requirement."
+}

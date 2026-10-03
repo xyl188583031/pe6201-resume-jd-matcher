@@ -1,0 +1,20 @@
+Sentinel Data is hiring a AI Engineer (Graduate) for our growth team.
+
+About the role
+Our applied AI team ships models into products used by real customers, so we care as much about evaluation and monitoring as about training.
+
+Requirements:
+- machine learning
+- feature engineering
+- model evaluation
+- Hugging Face
+- SQL
+
+What you will do
+- Explain the limits of a result to non-specialist colleagues in plain language
+- Keep a container image so the environment is reproducible for everyone
+- Prepare the raw rows and document what you excluded and why
+- Put a trained artifact behind a service other teams can call
+- Turn raw columns into inputs a model can actually use
+
+Send your resume and one line on the most relevant thing you have built.

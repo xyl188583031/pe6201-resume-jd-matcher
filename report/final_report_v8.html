@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Graduate Resume–JD Matcher — PE6201 Final Report</title>
+<style>
+/* report_style.css — A1-style layout for the PE6201 final report.
+   Consumed by render_report.py (inlined into final_report_v8.html).
+   Page header / footer are NOT set here: Chromium (Edge) does not support
+   the CSS Paged Media margin boxes (@top-left etc.). They are injected per
+   page by the CDP driver (_print_pdf.mjs) via Page.printToPDF's
+   headerTemplate / footerTemplate, so `Page N` uses the real page counter. */
+
+@page {
+  size: A4;
+}
+
+/* ---------- base ---------- */
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.5;
+  color: #2c2c2c;
+  margin: 0;
+}
+
+/* ---------- headings ---------- */
+h1 {
+  font-size: 24pt;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #1a1a1a;
+  margin: 0 0 0.6em 0;
+}
+
+h2 {
+  font-size: 14pt;
+  font-weight: 700;
+  color: #A6192E;
+  margin: 1.5em 0 0.5em 0;
+  page-break-after: avoid;
+}
+
+h3 {
+  font-size: 11.5pt;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 1.1em 0 0.4em 0;
+  page-break-after: avoid;
+}
+
+/* ---------- text ---------- */
+p {
+  margin: 0 0 0.7em 0;
+  orphans: 2;
+  widows: 2;
+}
+
+strong {
+  color: #1a1a1a;
+}
+
+em {
+  font-style: italic;
+}
+
+code {
+  font-family: Consolas, "Cascadia Mono", "Courier New", monospace;
+  font-size: 9.5pt;
+  background: #f3f3f3;
+  border-radius: 2px;
+  padding: 0 3px;
+}
+
+/* ---------- tables ---------- */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 10pt;
+  margin: 0.5em 0 1em 0;
+  page-break-inside: auto;
+}
+
+thead {
+  display: table-header-group;
+}
+
+tr {
+  page-break-inside: avoid;
+}
+
+th {
+  background: #f5f5f5;
+  color: #1a1a1a;
+  font-weight: 700;
+  text-align: left;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 4px 6px;
+  vertical-align: top;
+  line-height: 1.35;
+}
+
+/* ---------- quotations ---------- */
+blockquote {
+  border-left: 3px solid #A6192E;
+  background: #fafafa;
+  margin: 0.8em 0;
+  padding: 0.45em 0.9em;
+  color: #2c2c2c;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+</style>
+</head>
+<body>
+<h1>Graduate Resume–JD Matcher with RAG-Prefill Assistant</h1>
+<p><em>Business case v8. First person throughout (Watchouts p.3). Every quotation carries deck and page (Watchouts p.1).</em></p>
+<p><strong>Keys.</strong> <code>PS §N</code> = problem statement; <code>README §N</code> = <code>resume_jd_matcher/README.md</code>.</p>
+<h2>1 · Working title</h2>
+<p><strong>Graduate Resume–JD Matcher with RAG-Prefill Assistant.</strong></p>
+<p><strong>Decision:</strong> keep <em>prefill</em> in the name and keep <em>submit</em> out of it.</p>
+<h2>2 · The problem, and why it matters</h2>
+<p><strong>One sentence.</strong> No low-cost assistant adapts a graduate's resume to a posting and fills the form <em>without inventing experience</em>. Wei Ling spends <strong>10–15 hours a week</strong> on applications (PS §2–§3).</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>What it does</th>
+<th>What it does not do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jobscan</td>
+<td>Reports a keyword match rate</td>
+<td>Cannot say "I cannot support this from your data"</td>
+</tr>
+<tr>
+<td>Teal</td>
+<td>Resume tailoring tracker</td>
+<td>Same — no abstention path</td>
+</tr>
+<tr>
+<td>Rezi</td>
+<td>Rewrites to a template</td>
+<td>Generates confidently rather than abstains</td>
+</tr>
+<tr>
+<td>Resume Worded</td>
+<td>Scores and suggests edits</td>
+<td>Same</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Out of scope:</strong> real portals, auto-submission, persistence, fine-tuning (PS §5).</p>
+<p><strong>Commercial impact:</strong> Wei Ling recovers 10–15 hours/week for interview preparation; at $0.0008 per successful task, the cost per recovered hour is under one cent.</p>
+<p><strong>Decision:</strong> a <em>trust</em> problem with a matching problem inside it, not the reverse.</p>
+<h2>3 · Who it is for, and the domain</h2>
+<p><strong>One user, by role:</strong> the graduate job-seeker — an MSc student with no careers-office appointment and no paid subscription. <em>Wei Ling, at 9pm, tailoring her resume to the fourth posting of the week</em> (PS §3).</p>
+<p><strong>Decision:</strong> a short actionable list, and an abstention that explains itself rather than printing a number.</p>
+<p><strong>What changes for her:</strong> she reads match reasons and missing requirements instead of re-typing — and spends the recovered time on interview preparation (PS §3).</p>
+<h2>4 · Why AI — and which kind <em>(ILO 1, 3)</em></h2>
+<p><strong>Decision: rent the model, own the rules that stop it being wrong.</strong> (PS §4; Watchouts p.2)</p>
+<p><strong>The free baseline, named.</strong> Condition A — TF-IDF and keyword overlap, <strong>12/20 alone</strong> — stands in for the majority-class baseline: "the score you get by always guessing the most common answer" (Watchouts p.3).</p>
+<table>
+<thead>
+<tr>
+<th>Rung</th>
+<th>Bought?</th>
+<th>What it bought</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prompting (Class 3) — one prompt contract</td>
+<td>Yes</td>
+<td>All of B and C</td>
+</tr>
+<tr>
+<td>Retrieval-augmented generation (Class 2)</td>
+<td>Yes</td>
+<td>Grounding on a corpus I can cite, at +$0.0001 per case — and, per §10, no extra pass</td>
+</tr>
+<tr>
+<td>Fine-tuning</td>
+<td>No</td>
+<td>Retrieval supplies the facts; no behaviour to learn</td>
+</tr>
+<tr>
+<td>Agent (Class 4)</td>
+<td>No</td>
+<td>The path is fixed — input → retrieve → one call → one output</td>
+</tr>
+</tbody>
+</table>
+<p>"Match the type to the job, and climb the ladder only as far as you need" (Watchouts p.2) — refusing the agent was task-type matching, not caution.</p>
+<p><strong>Why confidence had to be built, not read.</strong> A classifier "returns a calibrated probability for every class ... so you can set a threshold and route anything below it to a human"; an API "returns the word 'positive', with no honest confidence attached" (C2_Sorting_vs_making p.11). The abstention gate is built from retrieval evidence and model self-report — <strong>the mechanism that lets the system decline instead of invent</strong> (README §5).</p>
+<p><strong>Four rules stay deterministic:</strong> PDF extraction, the abstention threshold, refusal of locked controls, and identity-document detection (README §5).</p>
+<h2>5 · Build vs buy <em>(ILO 2, 3)</em></h2>
+<p><strong>Decision: rent the commodity, own the logic and the data.</strong> Down the Class 2 stack — seven layers, one reason each (Watchouts p.2; PS §5):</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Own/rent</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface</td>
+<td><strong>Build</strong></td>
+<td>The interface is the product; a rented UI would own the user relationship</td>
+</tr>
+<tr>
+<td>Hosting</td>
+<td><strong>Neither</strong></td>
+<td>One user on one machine — a cloud bill buys nothing yet</td>
+</tr>
+<tr>
+<td>Model inference</td>
+<td><strong>Rent</strong></td>
+<td><strong><code>openai/gpt-4o-mini</code> on OpenRouter</strong> — a frontier model cannot be rented as training</td>
+</tr>
+<tr>
+<td>Vector store</td>
+<td>Rent</td>
+<td>A commodity; a rival can buy the same one, so it decides nothing</td>
+</tr>
+<tr>
+<td>Orchestration</td>
+<td>Build</td>
+<td>This <em>is</em> the product logic</td>
+</tr>
+<tr>
+<td>Data and embeddings</td>
+<td>Build</td>
+<td>A rival on the same API cannot copy my corpus</td>
+</tr>
+<tr>
+<td>Evaluation</td>
+<td>Build</td>
+<td>My risk; my rubric</td>
+</tr>
+</tbody>
+</table>
+<p>One hosted model over one gateway, at <strong>$0.0008 (B) / $0.0010 (C)</strong> per successful task — "Cost per SUCCESSFUL task. Always." (Class5/C2 p.26). <strong>Low-code as evidence:</strong> two hours on a workflow builder broke on the feature the product exists for: conditional branching on the abstention threshold. I moved to Python for control (feedback line 6).</p>
+<h2>6 · Data <em>(ILO 2)</em></h2>
+<p><strong>Decision: a licensing-clear public corpus, one committed generator, ground truth frozen before any run.</strong> With §7 and §9, these carry criterion 3 — "the largest single block of the project mark at 35%" (Watchouts p.1).</p>
+<p><strong>The corpus is 54 chunks from public CC BY 4.0 sources.</strong> The test set is 20 cases from one committed generator. <strong>Ground truth is frozen before inference</strong> — "in a file before you run anything, never after you have seen results" (Watchouts p.2). <strong>Two reported deviations:</strong> a document-extraction chain different from the plan with no repository reason (v4 §H.1 row 3); and condition A's abstention record being circular (README §7.4).</p>
+<h2>7 · Metric and evaluation <em>(ILO 2, 3)</em></h2>
+<p><strong>Decision: one number to hit, a free baseline, abstention as two numbers, no LLM-as-judge.</strong> "Accuracy without the majority-class baseline ... says nothing" (Watchouts p.3); "give your system a way to say 'I don't know' — then measure it" (Watchouts p.3).</p>
+<p><strong>The metric is a pass rate over 20 fixed cases</strong>, bar <strong>16/20</strong>, where a pass needs <strong>zero fabricated skills</strong> and an exact match (README §7.1). <strong>Abstention is two numbers</strong> — how often, and whether those were the cases it would have got wrong (README §7.3). <strong>Delivered: A 3/20, B 0/20, C 1/20</strong>; C's single abstention is false (report_en.md §10.1).</p>
+<p><strong>No LLM-as-judge:</strong> the instructor called it "right call" (feedback line 6), and "an unaligned judge just launders bias" (Class2/C4 p.13). <strong>L1 is machine-checkable, L2 hand-judged</strong> — "L1 checks the shape of the answer, L2 checks whether it is true" (A1_FAQ p.4). The human L2 layer earned its cost — across twelve fields, 7 agreed / 2 disagreed / 3 unclear, and <strong>L2 found two defects the machine checks had passed</strong>.</p>
+<h2>8 · Risks, limitations, responsible use <em>(ILO 2, 3, 4)</em></h2>
+<p><strong>Decision: every risk carries its mitigation on the same line.</strong> "Every risk needs its mitigation on the same line. A risk list without fixes is a description, not a plan." (Watchouts p.3)</p>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Mitigation, as built</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hallucinated experience</strong></td>
+<td>No-fabrication prompt rule; unsupported skills stripped; <code>FabricationGuard</code> (README §6)</td>
+</tr>
+<tr>
+<td><strong>Silent failure</strong> (PS §8 Risk 2)</td>
+<td>Chunk IDs logged; confidence from similarity <em>and</em> self-report; abstain if <strong>either</strong> is low (README §5)</td>
+</tr>
+<tr>
+<td><strong>Form misalignment</strong></td>
+<td>Simulated form labelled <code>Prototype - not for live sites</code>, which "never submits anywhere" (README §1.4)</td>
+</tr>
+<tr>
+<td><strong>Data leakage</strong></td>
+<td>In-memory; hashes logged, never raw text (README §9)</td>
+</tr>
+<tr>
+<td><strong>Injection via the pasted JD</strong></td>
+<td>Hijack patterns redacted; the pasted text is fenced as data, never as instructions (README §9)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The silent failure, named.</strong> "A prompt asks. A permission enforces." (Class6_Close p.6): the server has <strong>no write or submit route</strong>.</p>
+<p><strong>Frameworks: two drifts reported, not blended</strong> (report_en.md §8).</p>
+<p><strong>Intended use:</strong> a resume <em>reference and practice</em> tool, run locally, suggestions confirmed by a human. <strong>Non-use:</strong> real submissions, fictitious history, auto-submission, real candidate data (PS §8).</p>
+<p><strong>AI disclosure.</strong> "Did it write or rewrite something that ended up in your submission, or did it change a decision you made? If yes, it counts" (A1_FAQ p.5).</p>
+<table>
+<thead>
+<tr>
+<th>FAQ category (A1_FAQ p.5)</th>
+<th>Used?</th>
+<th>Helped</th>
+<th>Misled</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chat assistants</td>
+<td><strong>Yes (agentic)</strong></td>
+<td>Iterated the report across eight versions and 43 patch passes, from 2,876 to 1,375 non-table words; checked 26 course quotations against deck and page</td>
+<td>Read “Hello Folks,.txt” as a filename and reported it missing — the real file is <code>study slides/final request.txt</code>; and declared the form-matrix <code>report.md</code> “final” though <code>run_form_matrix.py</code> regenerates it</td>
+</tr>
+<tr>
+<td>Coding assistants in the editor</td>
+<td><strong>Yes (agentic)</strong></td>
+<td>Built the form-matrix driver (<code>run_form_matrix.py</code>, 19 runs, 205 checks); added the <code>/extract_resume</code> route and the PDF.js worker; wrote the <code>_verify_v*_quotes.py</code> scripts</td>
+<td>Generated a <code>sender.tab</code> guard that silently cut the side-panel-to-backend channel; reported a UTF-8 mojibake in <code>report.md</code> that was a reader-side decode artifact, not a file defect</td>
+</tr>
+<tr>
+<td>Search that answers rather than links</td>
+<td><strong>No</strong></td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Writing and translation</td>
+<td><strong>No</strong></td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Workplace assistants</td>
+<td><strong>No</strong></td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Model calls inside the assignment</td>
+<td><strong>No</strong> — subject, not assistance</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h2>9 · Smallest first version <em>(ILO 2)</em></h2>
+<p><strong>Decision: build the end-to-end path first, and describe the slice, not a date.</strong> "A date is not a version" (Watchouts p.3). The first slice was one input → one model call → one output, with the pass/fail sentence written before the build: at least <strong>16 of 20</strong> cases with <strong>zero fabricated skills</strong> (PS §9). The agent was refused as a <strong>commercial judgement</strong> — a loop multiplies cost without changing the answer — and a browser assistant was added without touching the control flow: <strong>scope decision, not scope creep</strong>.</p>
+<p><strong>Next:</strong> build the router (ceiling one case above B; README §13), and separate the corpus change from the embedder change so the gain is attributed (report_en.md §10.9).</p>
+<h2>10 · Results</h2>
+<p>One run, three conditions, <strong>20 cases each, 60 records, 0 errors</strong> (README §1.1). Counts first — one miss is five points:</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Passed</th>
+<th>Zero fabrication</th>
+<th>Prefill all-match</th>
+<th>Abstained</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A — rule-based TF-IDF</td>
+<td><strong>12/20</strong></td>
+<td>20/20</td>
+<td>13/20</td>
+<td>3/20</td>
+</tr>
+<tr>
+<td>B — prompt-only LLM</td>
+<td><strong>17/20</strong></td>
+<td>20/20</td>
+<td>17/20</td>
+<td>0/20</td>
+</tr>
+<tr>
+<td>C — with retrieval (RAG)</td>
+<td><strong>16/20</strong></td>
+<td>20/20</td>
+<td>17/20</td>
+<td>1/20</td>
+</tr>
+</tbody>
+</table>
+<p>Against a bar of 16/20: <strong>B and C clear it, A does not</strong> (README §1.1). Every ratio divides by the same <strong>20 fixed cases</strong> — read "17/20" by first asking what the denominator was (Class1/C1 p.3). <strong>The headline is B 17 &gt; C 16: the retrieval rung did not pay.</strong></p>
+<p><strong>The pre-committed kill condition fired:</strong> the top rung gained nothing and cost more, agreed "before the pilot starts" (Class5/C2 p.18). <strong>One prompt contract moved the number</strong> to <strong>17/20 in both conditions</strong> (B +2, C +3), and <strong>a second identical run reproduced all three counts</strong> (README §1.1).</p>
+<h2>11 · Cost</h2>
+<p>The business question is not the token rate but the cost of one <strong>successful</strong> task (report_en.md §11).</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model calls</td>
+<td>0</td>
+<td>60</td>
+<td>60</td>
+</tr>
+<tr>
+<td>Cost, 20 cases</td>
+<td>$0.0000</td>
+<td>$0.0137</td>
+<td>$0.0154</td>
+</tr>
+<tr>
+<td>Cost per case</td>
+<td>$0.0000</td>
+<td>$0.0007</td>
+<td>$0.0008</td>
+</tr>
+<tr>
+<td>Median latency per case</td>
+<td>16 ms</td>
+<td>8,289 ms</td>
+<td>8,375 ms</td>
+</tr>
+<tr>
+<td><strong>Cost per successful task</strong></td>
+<td><strong>$0.0000</strong></td>
+<td><strong>$0.0008</strong></td>
+<td><strong>$0.0010</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>C spends more per success than B and succeeds less often.</strong> The model path is roughly <strong>500× slower</strong> than the rules path — fine for one form typed at a desk, awkward if batched.</p>
+<p><strong>The economic case:</strong> condition B costs $0.0008 per successful task — cheaper than the human minutes it saves, and cheaper than condition C, which buys no accuracy for its 25% higher per-success cost.</p>
+<h2>12 · What this does not claim</h2>
+<p><strong>Decision: end on the limitations, not the result.</strong></p>
+<p>The zero-fabrication figure in the form-matrix path is <strong>structurally zero</strong> (report.md §6). The time saving is <strong>unmeasured</strong> (feedback line 10). The router is <strong>deliberately unbuilt</strong> (README §13); one measured gain is <strong>unattributed</strong> (report_en.md §10.9); the wider 40-case evaluation was never run (README §1.2); and the side panel container needs a human click.</p>
+<p><strong>The commercial case:</strong> a trust-building assistant that declines rather than invents, priced per successful task, and cheaper than the problem it solves. "Carry the method. The facts have a shelf life; the questions do not." (Class6_Close p.6)</p>
+</body>
+</html>

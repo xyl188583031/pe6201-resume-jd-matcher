@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Help-text-variant Application Form - form_03 - Acme Corp</title>
+<!--
+  form_03_help_text.html  --  test-matrix form, dimension: HELP TEXT PLACEMENT
+  ------------------------------------------------------------------
+  Dimensions changed vs the baseline (form_01):
+    1. Help text moves into <legend>. Every group's guidance now lives in the
+       fieldset legend instead of a sibling <span class="hint">. This is the
+       dimension the content script's "legend is section text, not field text"
+       rule exists for: the legend must NOT reach the classifier, so a field must
+       still be nameable from its own label.
+    2. Two fields whose ONLY name is in the legend:
+         - `extra_1`   : legend "Additional information", no label, no aria-label,
+                         no placeholder, no name hint. Nothing about the control
+                         itself says what it is.
+         - `name_2`    : label text "Name" and legend "Employer details". A person
+                         reads the legend and types the employer; the classifier
+                         cannot see legends, so the generic `\bname\b` fallback is
+                         the only rule left.
+    3. Two open questions instead of one, so a classified open question and an
+       unclassifiable one can be compared inside a single form:
+         - "Tell us about yourself"        (explicit label -> narrative)
+         - `extra_1`                       (legend only    -> unclassifiable)
+  Everything else - naming style, maxlength, control types, language - matches the
+  baseline.
+  ------------------------------------------------------------------
+  Local prototype only. Simulated HTML. Synthetic data. Never submitted.
+-->
+<style>
+  :root { --ink:#1a1d21; --muted:#5c6672; --line:#d8dee6; --bg:#f5f7fa;
+          --card:#fff; --accent:#1f5f8b; --warn:#8a3b12; --warnbg:#fdf3ec; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:32px 16px 64px; font:15px/1.55 -apple-system,"Segoe UI",Roboto,sans-serif;
+         color:var(--ink); background:var(--bg); }
+  .wrap { max-width:760px; margin:0 auto; }
+  h1 { font-size:22px; margin:0 0 6px; }
+  .sub { color:var(--muted); font-size:13.5px; }
+  .demo-banner { margin:16px 0 24px; padding:12px 14px; border-radius:8px; background:var(--warnbg);
+                 border:1px solid #e8cdb8; color:var(--warn); font-size:13.5px; }
+  fieldset { background:var(--card); border:1px solid var(--line); border-radius:10px;
+             padding:18px 20px 22px; margin:0 0 18px; }
+  legend { font-weight:600; font-size:14px; padding:0 6px; color:var(--accent); }
+  .row { display:flex; flex-wrap:wrap; gap:14px; margin-bottom:14px; }
+  .field { flex:1 1 220px; display:flex; flex-direction:column; gap:5px; }
+  .field.full { flex-basis:100%; }
+  label { font-size:13px; font-weight:600; }
+  input[type=text],input[type=email],input[type=tel],input[type=url],input[type=number],
+  input[type=password],select,textarea { width:100%; padding:8px 10px; font:inherit; font-size:14px;
+    border:1px solid var(--line); border-radius:6px; background:#fff; color:var(--ink); }
+  textarea { resize:vertical; min-height:72px; }
+  .choice { display:flex; align-items:center; gap:8px; font-weight:400; font-size:14px; }
+  .danger { background:#fffaf7; }
+  .actions { display:flex; gap:10px; align-items:center; margin-top:6px; }
+  input[type=submit],input[type=reset] { font:inherit; font-weight:600; padding:10px 20px;
+    border-radius:6px; border:1px solid var(--accent); background:var(--accent); color:#fff;
+    cursor:pointer; width:auto; }
+  input[type=reset].secondary { background:#fff; color:var(--accent); }
+  #status { font-size:13.5px; color:var(--muted); margin-left:6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Graduate Programme Application</h1>
+  <p class="sub">Acme Corp &middot; Singapore &middot; Applied Research Intern</p>
+
+  <div class="demo-banner">
+    <strong>Prototype - not for live sites.</strong>
+    Simulated HTML form. All guidance sits in the section headings on this one.
+  </div>
+
+  <form id="application" action="#" method="post" novalidate>
+    <input type="hidden" id="csrf_token" name="csrf_token" value="demo-csrf-3c9b21">
+
+    <fieldset>
+      <legend>Personal information - use the name exactly as printed on your passport</legend>
+      <div class="row">
+        <div class="field">
+          <label for="full_name">Full name</label>
+          <input type="text" id="full_name" name="full_name" maxlength="80" required>
+        </div>
+        <div class="field">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div class="field">
+          <label for="location">Current city</label>
+          <input type="text" id="location" name="location">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field full">
+          <label for="linkedin">LinkedIn profile</label>
+          <input type="url" id="linkedin" name="linkedin">
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Education - copy the qualification wording from your transcript</legend>
+      <div class="row">
+        <div class="field">
+          <label for="university">University / institution</label>
+          <input type="text" id="university" name="university" required>
+        </div>
+        <div class="field">
+          <label for="degree">Degree</label>
+          <select id="degree" name="degree">
+            <option value="">Please choose</option>
+            <option value="BSc">BSc</option>
+            <option value="MSc">MSc</option>
+            <option value="MBA">MBA</option>
+            <option value="PhD">PhD</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="major">Major / field of study</label>
+          <input type="text" id="major" name="major">
+        </div>
+        <div class="field">
+          <label for="graduation_year">Expected graduation year</label>
+          <input type="number" id="graduation_year" name="graduation_year" min="2020" max="2035">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="gpa">GPA</label>
+          <input type="text" id="gpa" name="gpa" maxlength="10">
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- LEGEND IS THE ONLY NAME. No label, no aria-label, no placeholder, and the
+         name attribute carries no word that maps to a profile fact. A human reads
+         the heading; the classifier sees an anonymous text box. -->
+    <fieldset>
+      <legend>Employer details - most recent placement first</legend>
+      <div class="row">
+        <div class="field">
+          <label for="name_2">Name</label>
+          <input type="text" id="name_2" name="name_2">
+        </div>
+        <div class="field">
+          <label for="job_title">Job title</label>
+          <input type="text" id="job_title" name="job_title">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field full">
+          <label for="internship_period">Internship period</label>
+          <input type="text" id="internship_period" name="internship_period">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field full">
+          <label for="internship_description">Describe your internship</label>
+          <textarea id="internship_description" name="internship_description" rows="3"></textarea>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Project - one project is enough, describe your own contribution</legend>
+      <div class="row">
+        <div class="field">
+          <label for="project_name">Project name</label>
+          <input type="text" id="project_name" name="project_name">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field full">
+          <label for="project_description">Project description</label>
+          <textarea id="project_description" name="project_description" maxlength="300" rows="3"></textarea>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Skills and motivation - keep it concrete and short</legend>
+      <div class="row">
+        <div class="field full">
+          <label for="skills">Key skills</label>
+          <textarea id="skills" name="skills" maxlength="200" rows="2"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field full">
+          <label for="why_role">Why do you want this role?</label>
+          <textarea id="why_role" name="why_role" required rows="4"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field full">
+          <label for="cover_letter">Cover letter</label>
+          <textarea id="cover_letter" name="cover_letter" maxlength="800" rows="5"></textarea>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>In your own words - no word limit here</legend>
+      <div class="row">
+        <div class="field full">
+          <label for="open_question">Tell us about yourself</label>
+          <textarea id="open_question" name="open_question" rows="4"></textarea>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- OPEN QUESTION 2, deliberately unclassifiable: the legend names it and
+         nothing on the control does. -->
+    <fieldset>
+      <legend>Additional information</legend>
+      <div class="row">
+        <div class="field full">
+          <textarea id="extra_1" name="extra_1" rows="3"></textarea>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="danger">
+      <legend>Identity documents - never filled by the assistant</legend>
+      <div class="row">
+        <div class="field">
+          <label for="passport_no">Passport number</label>
+          <input type="text" id="passport_no" name="passport_no">
+        </div>
+        <div class="field">
+          <label for="nric">NRIC / national ID number</label>
+          <input type="text" id="nric" name="nric">
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Eligibility</legend>
+      <div class="row">
+        <div class="field full">
+          <label id="work_auth_label">Are you authorised to work in Singapore?</label>
+          <div role="radiogroup" aria-labelledby="work_auth_label">
+            <label class="choice"><input type="radio" name="work_auth" value="Yes" aria-label="Work authorisation Yes"> Yes</label>
+            <label class="choice"><input type="radio" name="work_auth" value="No" aria-label="Work authorisation No"> No</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field full">
+          <label class="choice" for="consent">
+            <input type="checkbox" id="consent" name="consent">
+            I confirm the information I submit is accurate.
+          </label>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Attachments</legend>
+      <div class="row">
+        <div class="field full">
+          <label for="cv">Upload CV</label>
+          <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field full">
+          <label for="portal_password">Set a password for your applicant portal</label>
+          <input type="password" id="portal_password" name="portal_password">
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="actions">
+      <input type="submit" id="submit_application" name="submit_application" value="Submit application">
+      <input type="reset" class="secondary" id="reset_form" value="Reset form">
+      <span id="status"></span>
+    </div>
+  </form>
+</div>
+
+<script>
+  window.__submitAttempts = 0;
+  window.__submitBlocked = false;
+  document.getElementById('application').addEventListener('submit', function (event) {
+    event.preventDefault();
+    window.__submitAttempts += 1;
+    window.__submitBlocked = true;
+    document.getElementById('status').textContent = 'Submission blocked: simulated local form.';
+  });
+  document.getElementById('reset_form').addEventListener('click', function () {
+    document.getElementById('status').textContent = 'Reset clicked: nothing was submitted.';
+  });
+</script>
+</body>
+</html>

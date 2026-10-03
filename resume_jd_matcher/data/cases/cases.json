@@ -1,0 +1,1037 @@
+{
+  "meta": {
+    "n_cases": 20,
+    "families": [
+      "AI/ML",
+      "Data Analytics",
+      "Product Management",
+      "Software Engineering"
+    ],
+    "seed": 20260824,
+    "generator": "data/synthetic_generator/generate_cases.py",
+    "ground_truth": "data/cases/ground_truth.csv",
+    "note": "Synthetic only. No real candidate data. Ground truth is fixed before any model call."
+  },
+  "cases": [
+    {
+      "case_id": "AIML-v01_sparse_terse-p00",
+      "job_family": "AI/ML",
+      "variant": "v01_sparse_terse",
+      "variant_axes": {
+        "tone": "terse",
+        "length": "short",
+        "skill_density": "low",
+        "named_count": 5,
+        "responsibility_count": 5
+      },
+      "profile_id": "aiml_p00",
+      "company": "Sentinel Data",
+      "title": "AI Engineer (Graduate)",
+      "jd_text": "Sentinel Data is hiring a AI Engineer (Graduate) for our growth team.\n\nAbout the role\nOur applied AI team ships models into products used by real customers, so we care as much about evaluation and monitoring as about training.\n\nRequirements:\n- machine learning\n- feature engineering\n- model evaluation\n- Hugging Face\n- SQL\n\nWhat you will do\n- Explain the limits of a result to non-specialist colleagues in plain language\n- Keep a container image so the environment is reproducible for everyone\n- Prepare the raw rows and document what you excluded and why\n- Put a trained artifact behind a service other teams can call\n- Turn raw columns into inputs a model can actually use\n\nSend your resume and one line on the most relevant thing you have built.",
+      "resume_text": "Tan Wei Ling\ntan.weiling@example.edu | +65 9123 4500 | Singapore\n\nSUMMARY\nMaster of Science candidate in Artificial Intelligence. Focus on evidenced, measurable work.\n\nEDUCATION\nNanyang Technological University - Master of Science in Artificial Intelligence, expected graduation 2027\n\nSKILLS\nPython, machine learning, deep learning, PyTorch, TensorFlow, scikit-learn, natural language processing (NLP), MLOps, feature engineering, model evaluation, SQL, Git, Docker, pandas\n\nEXPERIENCE\nSentinel Data - Machine Learning Intern (May 2025 - Aug 2025)\n- Applied Python; Applied PyTorch; Applied MLOps on a supervised team project with a documented outcome.\nUniversity Research Lab - Student Researcher (Jan 2025 - Apr 2025)\n- Applied natural language processing (NLP); Applied model evaluation on a supervised team project with a documented outcome.\n",
+      "named_skills": [
+        "Machine Learning",
+        "Feature Engineering",
+        "Model Evaluation",
+        "Hugging Face",
+        "SQL"
+      ],
+      "implied_skills": [
+        "Docker",
+        "MLOps"
+      ],
+      "required_skills": [
+        "Feature Engineering",
+        "Hugging Face",
+        "Machine Learning",
+        "Model Evaluation",
+        "SQL",
+        "Docker",
+        "MLOps"
+      ],
+      "candidate_skills": [
+        "Deep Learning",
+        "Docker",
+        "Feature Engineering",
+        "Git",
+        "MLOps",
+        "Machine Learning",
+        "Model Evaluation",
+        "NLP",
+        "Pandas",
+        "PyTorch",
+        "Python",
+        "SQL",
+        "TensorFlow",
+        "scikit-learn"
+      ]
+    },
+    {
+      "case_id": "AIML-v02_sparse_formal-p01",
+      "job_family": "AI/ML",
+      "variant": "v02_sparse_formal",
+      "variant_axes": {
+        "tone": "formal",
+        "length": "short",
+        "skill_density": "low",
+        "named_count": 5,
+        "responsibility_count": 3
+      },
+      "profile_id": "aiml_p01",
+      "company": "Sentinel Data",
+      "title": "Machine Learning Engineer",
+      "jd_text": "Sentinel Data seeks to appoint a Machine Learning Engineer within the platform function. The successful candidate will work alongside senior practitioners and will be expected to demonstrate the following competencies.\n\nAbout the role\nOur applied AI team ships models into products used by real customers, so we care as much about evaluation and monitoring as about training.\n\nEssential requirements are as follows:\n- deep learning\n- PyTorch\n- TensorFlow\n- natural language processing (NLP)\n- MLOps\n\nWhat you will do\n- Put a trained artifact behind a service other teams can call\n- Prepare the raw rows and document what you excluded and why\n- Compare candidate approaches against a stated metric instead of shipping the first one that works\n\nRemuneration is commensurate with experience. Shortlisted applicants will be contacted within ten working days.",
+      "resume_text": "Arun Prakash\narun.prakash@example.edu | +65 9123 4501 | Singapore\n\nSUMMARY\nMaster of Science candidate in Computer Science. Focus on evidenced, measurable work.\n\nEDUCATION\nNational University of Singapore - Master of Science in Computer Science, expected graduation 2027\n\nSKILLS\nPython, machine learning, deep learning, PyTorch, scikit-learn, natural language processing (NLP), MLOps, feature engineering, model evaluation, SQL, Git, pandas, NumPy\n\nEXPERIENCE\nAureate Analytics - Data Science Intern (May 2025 - Jul 2025)\n- Applied Python; Applied machine learning; Applied SQL on a supervised team project with a documented outcome.\nCoursework Capstone - Project Lead (Aug 2024 - Dec 2024)\n- Applied PyTorch; Applied model evaluation on a supervised team project with a documented outcome.\n",
+      "named_skills": [
+        "Machine Learning",
+        "Deep Learning",
+        "PyTorch",
+        "TensorFlow",
+        "NLP",
+        "MLOps"
+      ],
+      "implied_skills": [
+        "Model Evaluation"
+      ],
+      "required_skills": [
+        "Deep Learning",
+        "MLOps",
+        "Machine Learning",
+        "NLP",
+        "PyTorch",
+        "TensorFlow",
+        "Model Evaluation"
+      ],
+      "candidate_skills": [
+        "Deep Learning",
+        "Feature Engineering",
+        "Git",
+        "MLOps",
+        "Machine Learning",
+        "Model Evaluation",
+        "NLP",
+        "NumPy",
+        "Pandas",
+        "PyTorch",
+        "Python",
+        "SQL",
+        "scikit-learn"
+      ]
+    },
+    {
+      "case_id": "AIML-v03_sparse_plain-p02",
+      "job_family": "AI/ML",
+      "variant": "v03_sparse_plain",
+      "variant_axes": {
+        "tone": "terse",
+        "length": "medium",
+        "skill_density": "low",
+        "named_count": 6,
+        "responsibility_count": 5
+      },
+      "profile_id": "aiml_p02",
+      "company": "Harbourline Systems",
+      "title": "Applied Scientist",
+      "jd_text": "Harbourline Systems is hiring a Applied Scientist for our growth team.\n\nAbout the role\nOur applied AI team ships models into products used by real customers, so we care as much about evaluation and monitoring as about training.\n\nRequirements:\n- Python\n- deep learning\n- scikit-learn\n- natural language processing (NLP)\n- MLOps\n- model evaluation\n\nWhat you will do\n- Explain the limits of a result to non-specialist colleagues in plain language\n- Write experiment code that another engineer can re-run and get the same numbers\n- Compare candidate approaches against a stated metric instead of shipping the first one that works\n- Keep a container image so the environment is reproducible for everyone\n- Prepare the raw rows and document what you excluded and why\n\nSend your resume and one line on the most relevant thing you have built.",
+      "resume_text": "Ng Hui Min\nng.huimin@example.edu | +65 9123 4502 | Singapore\n\nSUMMARY\nBachelor of Science candidate in Information Systems. Focus on evidenced, measurable work.\n\nEDUCATION\nSingapore Management University - Bachelor of Science in Information Systems, expected graduation 2026\n\nSKILLS\nPython, machine learning, deep learning, PyTorch, scikit-learn, natural language processing (NLP), MLOps, model evaluation, SQL, Git, pandas\n\nEXPERIENCE\nBrightwater Tech - AI Intern (May 2025 - Aug 2025)\n- Applied Python; Applied natural language processing (NLP); Applied MLOps on a supervised team project with a documented outcome.\n",
+      "named_skills": [
+        "Python",
+        "Deep Learning",
+        "scikit-learn",
+        "NLP",
+        "MLOps",
+        "Model Evaluation"
+      ],
+      "implied_skills": [
+        "Git",
+        "Docker"
+      ],
+      "required_skills": [
+        "Deep Learning",
+        "MLOps",
+        "Model Evaluation",
+        "NLP",
+        "Python",
+        "scikit-learn",
+        "Docker",
+        "Git"
+      ],
+      "candidate_skills": [
+        "Deep Learning",
+        "Git",
+        "MLOps",
+        "Machine Learning",
+        "Model Evaluation",
+        "NLP",
+        "Pandas",
+        "PyTorch",
+        "Python",
+        "SQL",
+        "scikit-learn"
+      ]
+    },
+    {
+      "case_id": "AIML-v04_sparse_verbose-p03",
+      "job_family": "AI/ML",
+      "variant": "v04_sparse_verbose",
+      "variant_axes": {
+        "tone": "verbose",
+        "length": "long",
+        "skill_density": "low",
+        "named_count": 6,
+        "responsibility_count": 4
+      },
+      "profile_id": "aiml_p03",
+      "company": "Lumen Products",
+      "title": "Computer Vision Engineer",
+      "jd_text": "Lumen Products is a fast-growing organisation operating across the region, and we are currently looking to expand our applied AI team with a talented and motivated Computer Vision Engineer who is eager to develop their career in a supportive and high-performing environment.\n\nAbout the role\nOur applied AI team ships models into products used by real customers, so we care as much about evaluation and monitoring as about training.\n\nThe role will require the following skills and attributes, which we consider essential for success in this position:\n- deep learning\n- TensorFlow\n- MLOps\n- feature engineering\n- Hugging Face\n- SQL\n\nWhat you will do\n- Turn raw columns into inputs a model can actually use\n- Prepare the raw rows and document what you excluded and why\n- Explain the limits of a result to non-specialist colleagues in plain language\n- Compare candidate approaches against a stated metric instead of shipping the first one that works\n\nWe look forward to receiving your application and will be in touch regarding next steps should your profile match our requirements for this position.",
+      "resume_text": "Siti Nurhaliza\nsiti.nurhaliza@example.edu | +65 9123 4503 | Singapore\n\nSUMMARY\nMaster of Science candidate in Data Science with hands-on experience across 11 tools and methods. Looking for a team where careful, evidenced work matters more than volume.\n\nEDUCATION\nNanyang Technological University - Master of Science in Data Science, expected graduation 2027\n\nSKILLS\nPython, machine learning, deep learning, PyTorch, scikit-learn, natural language processing (NLP), model evaluation, SQL, pandas, NumPy, Git\n\nEXPERIENCE\nMeridian Labs - Research Assistant (Aug 2024 - Dec 2024)\n- Applied PyTorch; Applied model evaluation on a supervised team project with a documented outcome.\n",
+      "named_skills": [
+        "Deep Learning",
+        "TensorFlow",
+        "MLOps",
+        "Feature Engineering",
+        "Hugging Face",
+        "SQL",
+        "Computer Vision"
+      ],
+      "implied_skills": [
+        "Model Evaluation"
+      ],
+      "required_skills": [
+        "Computer Vision",
+        "Deep Learning",
+        "Feature Engineering",
+        "Hugging Face",
+        "MLOps",
+        "SQL",
+        "TensorFlow",
+        "Model Evaluation"
+      ],
+      "candidate_skills": [
+        "Deep Learning",
+        "Git",
+        "Machine Learning",
+        "Model Evaluation",
+        "NLP",
+        "NumPy",
+        "Pandas",
+        "PyTorch",
+        "Python",
+        "SQL",
+        "scikit-learn"
+      ]
+    },
+    {
+      "case_id": "AIML-v05_medium_plain-p06",
+      "job_family": "AI/ML",
+      "variant": "v05_medium_plain",
+      "variant_axes": {
+        "tone": "conversational",
+        "length": "medium",
+        "skill_density": "medium",
+        "named_count": 8,
+        "responsibility_count": 4
+      },
+      "profile_id": "aiml_p06",
+      "company": "Aureate Analytics",
+      "title": "NLP Engineer",
+      "jd_text": "We are a small payments team at Aureate Analytics and we need a NLP Engineer who is comfortable saying what is not working yet.\n\nAbout the role\nOur applied AI team ships models into products used by real customers, so we care as much about evaluation and monitoring as about training.\n\nHere is what we actually need you to be good at:\n- Python\n- deep learning\n- PyTorch\n- TensorFlow\n- scikit-learn\n- feature engineering\n- Hugging Face\n- SQL\n\nWhat you will do\n- Turn raw columns into inputs a model can actually use\n- Put a trained artifact behind a service other teams can call\n- Keep a container image so the environment is reproducible for everyone\n- Write experiment code that another engineer can re-run and get the same numbers\n\nIf that sounds like you, send your resume. We read every one.",
+      "resume_text": "Daniel Oh\ndaniel.oh@example.edu | +65 9123 4506 | Singapore\n\nSUMMARY\nBachelor of Science candidate in Statistics. Focus on evidenced, measurable work.\n\nEDUCATION\nNational University of Singapore - Bachelor of Science in Statistics, expected graduation 2026\n\nSKILLS\nPython, machine learning, PyTorch, scikit-learn, SQL, statistics, pandas\n\nEXPERIENCE\nHarbourline Systems - Analytics Intern (May 2025 - Jul 2025)\n- Applied Python; Applied SQL on a supervised team project with a documented outcome.\n",
+      "named_skills": [
+        "Python",
+        "Deep Learning",
+        "PyTorch",
+        "TensorFlow",
+        "scikit-learn",
+        "NLP",
+        "Feature Engineering",
+        "Hugging Face",
+        "SQL"
+      ],
+      "implied_skills": [
+        "MLOps",
+        "Docker",
+        "Git"
+      ],
+      "required_skills": [
+        "Deep Learning",
+        "Feature Engineering",
+        "Hugging Face",
+        "NLP",
+        "PyTorch",
+        "Python",
+        "SQL",
+        "TensorFlow",
+        "scikit-learn",
+        "Docker",
+        "Git",
+        "MLOps"
+      ],
+      "candidate_skills": [
+        "Machine Learning",
+        "Pandas",
+        "PyTorch",
+        "Python",
+        "SQL",
+        "Statistics",
+        "scikit-learn"
+      ]
+    },
+    {
+      "case_id": "Software_Engineering-v01_sparse_terse-p00",
+      "job_family": "Software Engineering",
+      "variant": "v01_sparse_terse",
+      "variant_axes": {
+        "tone": "terse",
+        "length": "short",
+        "skill_density": "low",
+        "named_count": 5,
+        "responsibility_count": 5
+      },
+      "profile_id": "se_p00",
+      "company": "Meridian Labs",
+      "title": "Software Engineer (Graduate)",
+      "jd_text": "Meridian Labs is hiring a Software Engineer (Graduate) for our core infrastructure team.\n\nAbout the role\nYou will work in a small product team where engineers own their code from pull request through to production monitoring.\n\nRequirements:\n- Java\n- Git\n- Kubernetes\n- CI/CD\n- microservices\n\nWhat you will do\n- Automate the checks that run on every push so a bad change cannot merge\n- Review changes from teammates and give feedback that improves them\n- Query the application data store directly when investigating an issue\n- Split a growing application into independently deployable parts when one codebase stops scaling for the team\n- Write a failing check that reproduces a defect before you fix it\n\nSend your resume and one line on the most relevant thing you have built.",
+      "resume_text": "Wong Kai Xin\nwong.kaixin@example.edu | +65 9124 4600 | Singapore\n\nSUMMARY\nBachelor of Science candidate in Computer Science. Focus on evidenced, measurable work.\n\nEDUCATION\nNanyang Technological University - Bachelor of Science in Computer Science, expected graduation 2026\n\nSKILLS\nPython, Java, JavaScript, TypeScript, Git, Docker, Kubernetes, CI/CD, REST APIs, unit testing, SQL, shell scripting, Linux, Agile\n\nEXPERIENCE\nKestrel Software - Software Engineering Intern (May 2025 - Aug 2025)\n- Applied TypeScript; Applied Docker; Applied CI/CD on a supervised team project with a documented outcome.\nCoursework Project - Backend Developer (Jan 2025 - Apr 2025)\n- Applied Python; Applied REST APIs; Applied unit testing on a supervised team project with a documented outcome.\n",
+      "named_skills": [
+        "Java",
+        "Git",
+        "Kubernetes",
+        "CI/CD",
+        "Microservices"
+      ],
+      "implied_skills": [
+        "SQL",
+        "Unit Testing"
+      ],
+      "required_skills": [
+        "CI/CD",
+        "Git",
+        "Java",
+        "Kubernetes",
+        "Microservices",
+        "SQL",
+        "Unit Testing"
+      ],
+      "candidate_skills": [
+        "Agile",
+        "Bash",
+        "CI/CD",
+        "Docker",
+        "Git",
+        "Java",
+        "JavaScript",
+        "Kubernetes",
+        "Linux",
+        "Python",
+        "REST APIs",
+        "SQL",
+        "TypeScript",
+        "Unit Testing"
+      ]
+    },
+    {
+      "case_id": "Software_Engineering-v02_sparse_formal-p01",
+      "job_family": "Software Engineering",
+      "variant": "v02_sparse_formal",
+      "variant_axes": {
+        "tone": "formal",
+        "length": "short",
+        "skill_density": "low",
+        "named_count": 5,
+        "responsibility_count": 3
+      },
+      "profile_id": "se_p01",
+      "company": "Sentinel Data",
+      "title": "Backend Engineer",
+      "jd_text": "Sentinel Data seeks to appoint a Backend Engineer within the insights function. The successful candidate will work alongside senior practitioners and will be expected to demonstrate the following competencies.\n\nAbout the role\nYou will work in a small product team where engineers own their code from pull request through to production monitoring.\n\nEssential requirements are as follows:\n- Git\n- CI/CD\n- REST APIs\n- unit testing\n- SQL\n\nWhat you will do\n- Operate what you build, including responding to the alerts you configured\n- Review changes from teammates and give feedback that improves them\n- Automate the checks that run on every push so a bad change cannot merge\n\nRemuneration is commensurate with experience. Shortlisted applicants will be contacted within ten working days.",
+      "resume_text": "Nurul Aisyah\nnurul.aisyah@example.edu | +65 9124 4601 | Singapore\n\nSUMMARY\nBachelor of Science candidate in Computer Science. Focus on evidenced, measurable work.\n\nEDUCATION\nNational University of Singapore - Bachelor of Science in Computer Science, expected graduation 2026\n\nSKILLS\nPython, Java, JavaScript, Git, Docker, Kubernetes, CI/CD, REST APIs, unit testing, SQL, Linux, shell scripting\n\nEXPERIENCE\nNorthwind Digital - Backend Intern (May 2025 - Jul 2025)\n- Applied Java; Applied Docker; Applied unit testing on a supervised team project with a documented outcome.\n",
+      "named_skills": [
+        "Git",
+        "CI/CD",
+        "REST APIs",
+        "Unit Testing",
+        "SQL"
+      ],
+      "implied_skills": [],
+      "required_skills": [
+        "CI/CD",
+        "Git",
+        "REST APIs",
+        "SQL",
+        "Unit Testing"
+      ],
+      "candidate_skills": [
+        "Bash",
+        "CI/CD",
+        "Docker",
+        "Git",
+        "Java",
+        "JavaScript",
+        "Kubernetes",
+        "Linux",
+        "Python",
+        "REST APIs",
+        "SQL",
+        "Unit Testing"
+      ]
+    },
+    {
+      "case_id": "Software_Engineering-v03_sparse_plain-p02",
+      "job_family": "Software Engineering",
+      "variant": "v03_sparse_plain",
+      "variant_axes": {
+        "tone": "terse",
+        "length": "medium",
+        "skill_density": "low",
+        "named_count": 6,
+        "responsibility_count": 5
+      },
+      "profile_id": "se_p02",
+      "company": "Meridian Labs",
+      "title": "Full Stack Developer",
+      "jd_text": "Meridian Labs is hiring a Full Stack Developer for our core infrastructure team.\n\nAbout the role\nYou will work in a small product team where engineers own their code from pull request through to production monitoring.\n\nRequirements:\n- Python\n- Git\n- Docker\n- Kubernetes\n- unit testing\n- microservices\n\nWhat you will do\n- Design and implement service endpoints that other teams consume over HTTP\n- Split a growing application into independently deployable parts when one codebase stops scaling for the team\n- Operate what you build, including responding to the alerts you configured\n- Automate the checks that run on every push so a bad change cannot merge\n- Query the application data store directly when investigating an issue\n\nSend your resume and one line on the most relevant thing you have built.",
+      "resume_text": "Lee Zhong Wei\nlee.zhongwei@example.edu | +65 9124 4602 | Singapore\n\nSUMMARY\nBachelor of Science candidate in Information Systems. Focus on evidenced, measurable work.\n\nEDUCATION\nSingapore Management University - Bachelor of Science in Information Systems, expected graduation 2026\n\nSKILLS\nPython, JavaScript, TypeScript, Git, Docker, REST APIs, unit testing, SQL, CI/CD, Agile\n\nEXPERIENCE\nBrightwater Tech - Web Developer Intern (May 2025 - Aug 2025)\n- Applied JavaScript; Applied REST APIs on a supervised team project with a documented outcome.\n",
+      "named_skills": [
+        "Python",
+        "Git",
+        "Docker",
+        "Kubernetes",
+        "Unit Testing",
+        "Microservices"
+      ],
+      "implied_skills": [
+        "REST APIs",
+        "CI/CD",
+        "SQL"
+      ],
+      "required_skills": [
+        "Docker",
+        "Git",
+        "Kubernetes",
+        "Microservices",
+        "Python",
+        "Unit Testing",
+        "CI/CD",
+        "REST APIs",
+        "SQL"
+      ],
+      "candidate_skills": [
+        "Agile",
+        "CI/CD",
+        "Docker",
+        "Git",
+        "JavaScript",
+        "Python",
+        "REST APIs",
+        "SQL",
+        "TypeScript",
+        "Unit Testing"
+      ]
+    },
+    {
+      "case_id": "Software_Engineering-v04_sparse_verbose-p03",
+      "job_family": "Software Engineering",
+      "variant": "v04_sparse_verbose",
+      "variant_axes": {
+        "tone": "verbose",
+        "length": "long",
+        "skill_density": "low",
+        "named_count": 6,
+        "responsibility_count": 4
+      },
+      "profile_id": "se_p03",
+      "company": "Sentinel Data",
+      "title": "Platform Engineer",
+      "jd_text": "Sentinel Data is a fast-growing organisation operating across the region, and we are currently looking to expand our insights team with a talented and motivated Platform Engineer who is eager to develop their career in a supportive and high-performing environment.\n\nAbout the role\nYou will work in a small product team where engineers own their code from pull request through to production monitoring.\n\nThe role will require the following skills and attributes, which we consider essential for success in this position:\n- Java\n- JavaScript\n- Git\n- CI/CD\n- unit testing\n- SQL\n\nWhat you will do\n- Query the application data store directly when investigating an issue\n- Review changes from teammates and give feedback that improves them\n- Design and implement service endpoints that other teams consume over HTTP\n- Operate what you build, including responding to the alerts you configured\n\nWe look forward to receiving your application and will be in touch regarding next steps should your profile match our requirements for this position.",
+      "resume_text": "Ravi Kumar\nravi.kumar@example.edu | +65 9124 4603 | Singapore\n\nSUMMARY\nBachelor of Science candidate in Computer Engineering with hands-on experience across 9 tools and methods. Looking for a team where careful, evidenced work matters more than volume.\n\nEDUCATION\nNanyang Technological University - Bachelor of Science in Computer Engineering, expected graduation 2026\n\nSKILLS\nPython, Java, Git, Docker, REST APIs, unit testing, SQL, CI/CD, Linux\n\nEXPERIENCE\nSentinel Data - QA Intern (May 2025 - Jul 2025)\n- Applied unit testing; Applied SQL on a supervised team project with a documented outcome.\n",
+      "named_skills": [
+        "Java",
+        "JavaScript",
+        "Git",
+        "CI/CD",
+        "Unit Testing",
+        "SQL"
+      ],
+      "implied_skills": [
+        "REST APIs"
+      ],
+      "required_skills": [
+        "CI/CD",
+        "Git",
+        "Java",
+        "JavaScript",
+        "SQL",
+        "Unit Testing",
+        "REST APIs"
+      ],
+      "candidate_skills": [
+        "CI/CD",
+        "Docker",
+        "Git",
+        "Java",
+        "Linux",
+        "Python",
+        "REST APIs",
+        "SQL",
+        "Unit Testing"
+      ]
+    },
+    {
+      "case_id": "Software_Engineering-v05_medium_plain-p06",
+      "job_family": "Software Engineering",
+      "variant": "v05_medium_plain",
+      "variant_axes": {
+        "tone": "conversational",
+        "length": "medium",
+        "skill_density": "medium",
+        "named_count": 8,
+        "responsibility_count": 4
+      },
+      "profile_id": "se_p06",
+      "company": "Sentinel Data",
+      "title": "Associate Software Engineer",
+      "jd_text": "We are a small core infrastructure team at Sentinel Data and we need a Associate Software Engineer who is comfortable saying what is not working yet.\n\nAbout the role\nYou will work in a small product team where engineers own their code from pull request through to production monitoring.\n\nHere is what we actually need you to be good at:\n- Java\n- TypeScript\n- Git\n- Kubernetes\n- CI/CD\n- unit testing\n- SQL\n- microservices\n\nWhat you will do\n- Design and implement service endpoints that other teams consume over HTTP\n- Review changes from teammates and give feedback that improves them\n- Write a failing check that reproduces a defect before you fix it\n- Operate what you build, including responding to the alerts you configured\n\nIf that sounds like you, send your resume. We read every one.",
+      "resume_text": "Yeo Wen Jun\nyeo.wenjun@example.edu | +65 9124 4606 | Singapore\n\nSUMMARY\nBachelor of Science candidate in Information Systems. Focus on evidenced, measurable work.\n\nEDUCATION\nNational University of Singapore - Bachelor of Science in Information Systems, expected graduation 2026\n\nSKILLS\nPython, JavaScript, Git, REST APIs, SQL, Excel\n\nEXPERIENCE\nMeridian Labs - Automation Intern (May 2025 - Jul 2025)\n- Applied Python on a supervised team project with a documented outcome.\n",
+      "named_skills": [
+        "Java",
+        "TypeScript",
+        "Git",
+        "Kubernetes",
+        "CI/CD",
+        "Unit Testing",
+        "SQL",
+        "Microservices"
+      ],
+      "implied_skills": [
+        "REST APIs"
+      ],
+      "required_skills": [
+        "CI/CD",
+        "Git",
+        "Java",
+        "Kubernetes",
+        "Microservices",
+        "SQL",
+        "TypeScript",
+        "Unit Testing",
+        "REST APIs"
+      ],
+      "candidate_skills": [
+        "Excel",
+        "Git",
+        "JavaScript",
+        "Python",
+        "REST APIs",
+        "SQL"
+      ]
+    },
+    {
+      "case_id": "Data_Analytics-v01_sparse_terse-p00",
+      "job_family": "Data Analytics",
+      "variant": "v01_sparse_terse",
+      "variant_axes": {
+        "tone": "terse",
+        "length": "short",
+        "skill_density": "low",
+        "named_count": 5,
+        "responsibility_count": 5
+      },
+      "profile_id": "da_p00",
+      "company": "Lumen Products",
+      "title": "Data Analyst (Graduate)",
+      "jd_text": "Lumen Products is hiring a Data Analyst (Graduate) for our growth team.\n\nAbout the role\nYou will be the person other teams come to for a number they can defend, which means your working files need to be readable by someone else.\n\nRequirements:\n- pandas\n- data visualisation\n- statistics\n- ETL\n- dashboarding\n\nWhat you will do\n- Work out whether a movement is real or just noise before reporting it\n- Reason about the correctness of your own aggregations and window logic\n- Build and maintain views that the business opens every morning\n- Present a finding to a non-technical audience in two sentences, caveats included\n- Design a randomised comparison and read it out without stopping early\n\nSend your resume and one line on the most relevant thing you have built.",
+      "resume_text": "Ang Pei Shan\nang.peishan@example.edu | +65 9125 4700 | Singapore\n\nSUMMARY\nMaster of Science candidate in Business Analytics. Focus on evidenced, measurable work.\n\nEDUCATION\nNanyang Technological University - Master of Science in Business Analytics, expected graduation 2027\n\nSKILLS\nSQL, Python, pandas, NumPy, data cleaning, data visualisation, statistics, A/B testing, Excel, ETL, dashboarding, BigQuery, Git, machine learning\n\nEXPERIENCE\nAureate Analytics - Analytics Intern (May 2025 - Aug 2025)\n- Applied SQL; Applied dashboarding; Applied ETL on a supervised team project with a documented outcome.\nCoursework Project - Analyst (Jan 2025 - Apr 2025)\n- Applied Python; Applied pandas; Applied statistics on a supervised team project with a documented outcome.\n",
+      "named_skills": [
+        "Pandas",
+        "Data Visualisation",
+        "Statistics",
+        "ETL",
+        "Dashboarding"
+      ],
+      "implied_skills": [
+        "A/B Testing"
+      ],
+      "required_skills": [
+        "Dashboarding",
+        "Data Visualisation",
+        "ETL",
+        "Pandas",
+        "Statistics",
+        "A/B Testing"
+      ],
+      "candidate_skills": [
+        "A/B Testing",
+        "BigQuery",
+        "Dashboarding",
+        "Data Cleaning",
+        "Data Visualisation",
+        "ETL",
+        "Excel",
+        "Git",
+        "Machine Learning",
+        "NumPy",
+        "Pandas",
+        "Python",
+        "SQL",
+        "Statistics"
+      ]
+    },
+    {
+      "case_id": "Data_Analytics-v02_sparse_formal-p01",
+      "job_family": "Data Analytics",
+      "variant": "v02_sparse_formal",
+      "variant_axes": {
+        "tone": "formal",
+        "length": "short",
+        "skill_density": "low",
+        "named_count": 5,
+        "responsibility_count": 3
+      },
+      "profile_id": "da_p01",
+      "company": "Brightwater Tech",
+      "title": "Business Intelligence Analyst",
+      "jd_text": "Brightwater Tech seeks to appoint a Business Intelligence Analyst within the payments function. The successful candidate will work alongside senior practitioners and will be expected to demonstrate the following competencies.\n\nAbout the role\nYou will be the person other teams come to for a number they can defend, which means your working files need to be readable by someone else.\n\nEssential requirements are as follows:\n- SQL\n- Python\n- pandas\n- NumPy\n- statistics\n\nWhat you will do\n- Work out whether a movement is real or just noise before reporting it\n- Move recurring reporting off manual file edits and onto a scheduled job\n- Present a finding to a non-technical audience in two sentences, caveats included\n\nRemuneration is commensurate with experience. Shortlisted applicants will be contacted within ten working days.",
+      "resume_text": "Muhammad Faiz\nmuhammad.faiz@example.edu | +65 9125 4701 | Singapore\n\nSUMMARY\nBachelor of Science candidate in Statistics. Focus on evidenced, measurable work.\n\nEDUCATION\nNational University of Singapore - Bachelor of Science in Statistics, expected graduation 2026\n\nSKILLS\nSQL, Python, pandas, data cleaning, data visualisation, statistics, A/B testing, Excel, ETL, dashboarding, BigQuery, Git\n\nEXPERIENCE\nSentinel Data - Data Analyst Intern (May 2025 - Jul 2025)\n- Applied SQL; Applied dashboarding on a supervised team project with a documented outcome.\n",
+      "named_skills": [
+        "SQL",
+        "Python",
+        "Pandas",
+        "NumPy",
+        "Statistics"
+      ],
+      "implied_skills": [
+        "ETL"
+      ],
+      "required_skills": [
+        "NumPy",
+        "Pandas",
+        "Python",
+        "SQL",
+        "Statistics",
+        "ETL"
+      ],
+      "candidate_skills": [
+        "A/B Testing",
+        "BigQuery",
+        "Dashboarding",
+        "Data Cleaning",
+        "Data Visualisation",
+        "ETL",
+        "Excel",
+        "Git",
+        "Pandas",
+        "Python",
+        "SQL",
+        "Statistics"
+      ]
+    },
+    {
+      "case_id": "Data_Analytics-v03_sparse_plain-p02",
+      "job_family": "Data Analytics",
+      "variant": "v03_sparse_plain",
+      "variant_axes": {
+        "tone": "terse",
+        "length": "medium",
+        "skill_density": "low",
+        "named_count": 6,
+        "responsibility_count": 5
+      },
+      "profile_id": "da_p02",
+      "company": "Sentinel Data",
+      "title": "Analytics Engineer",
+      "jd_text": "Sentinel Data is hiring a Analytics Engineer for our payments team.\n\nAbout the role\nYou will be the person other teams come to for a number they can defend, which means your working files need to be readable by someone else.\n\nRequirements:\n- Python\n- NumPy\n- data cleaning\n- data visualisation\n- Excel\n- dashboarding\n\nWhat you will do\n- Reason about the correctness of your own aggregations and window logic\n- Build and maintain views that the business opens every morning\n- Present a finding to a non-technical audience in two sentences, caveats included\n- Work out whether a movement is real or just noise before reporting it\n- Design a randomised comparison and read it out without stopping early\n\nSend your resume and one line on the most relevant thing you have built.",
+      "resume_text": "Ho Li Wen\nho.liwen@example.edu | +65 9125 4702 | Singapore\n\nSUMMARY\nBachelor of Science candidate in Business Analytics. Focus on evidenced, measurable work.\n\nEDUCATION\nSingapore Management University - Bachelor of Science in Business Analytics, expected graduation 2026\n\nSKILLS\nSQL, Python, pandas, data cleaning, data visualisation, statistics, Excel, dashboarding, A/B testing, Excel, BigQuery\n\nEXPERIENCE\nLumen Products - Marketing Analyst Intern (May 2025 - Aug 2025)\n- Applied SQL; Applied Excel; Applied statistics on a supervised team project with a documented outcome.\n",
+      "named_skills": [
+        "Python",
+        "NumPy",
+        "Data Cleaning",
+        "Data Visualisation",
+        "Excel",
+        "Dashboarding"
+      ],
+      "implied_skills": [
+        "Statistics",
+        "A/B Testing"
+      ],
+      "required_skills": [
+        "Dashboarding",
+        "Data Cleaning",
+        "Data Visualisation",
+        "Excel",
+        "NumPy",
+        "Python",
+        "A/B Testing",
+        "Statistics"
+      ],
+      "candidate_skills": [
+        "A/B Testing",
+        "BigQuery",
+        "Dashboarding",
+        "Data Cleaning",
+        "Data Visualisation",
+        "Excel",
+        "Pandas",
+        "Python",
+        "SQL",
+        "Statistics"
+      ]
+    },
+    {
+      "case_id": "Data_Analytics-v04_sparse_verbose-p03",
+      "job_family": "Data Analytics",
+      "variant": "v04_sparse_verbose",
+      "variant_axes": {
+        "tone": "verbose",
+        "length": "long",
+        "skill_density": "low",
+        "named_count": 6,
+        "responsibility_count": 4
+      },
+      "profile_id": "da_p03",
+      "company": "Brightwater Tech",
+      "title": "Marketing Data Analyst",
+      "jd_text": "Brightwater Tech is a fast-growing organisation operating across the region, and we are currently looking to expand our growth team with a talented and motivated Marketing Data Analyst who is eager to develop their career in a supportive and high-performing environment.\n\nAbout the role\nYou will be the person other teams come to for a number they can defend, which means your working files need to be readable by someone else.\n\nThe role will require the following skills and attributes, which we consider essential for success in this position:\n- pandas\n- NumPy\n- data cleaning\n- data visualisation\n- A/B testing\n- dashboarding\n\nWhat you will do\n- Work out whether a movement is real or just noise before reporting it\n- Build and maintain views that the business opens every morning\n- Design a randomised comparison and read it out without stopping early\n- Reason about the correctness of your own aggregations and window logic\n\nWe look forward to receiving your application and will be in touch regarding next steps should your profile match our requirements for this position.",
+      "resume_text": "Kavitha Nair\nkavitha.nair@example.edu | +65 9125 4703 | Singapore\n\nSUMMARY\nBachelor of Science candidate in Data Science with hands-on experience across 10 tools and methods. Looking for a team where careful, evidenced work matters more than volume.\n\nEDUCATION\nNanyang Technological University - Bachelor of Science in Data Science, expected graduation 2026\n\nSKILLS\nSQL, Python, pandas, data cleaning, statistics, A/B testing, Excel, dashboarding, NumPy, Git\n\nEXPERIENCE\nMeridian Labs - Analyst Intern (May 2025 - Jul 2025)\n- Applied Python; Applied pandas on a supervised team project with a documented outcome.\n",
+      "named_skills": [
+        "Pandas",
+        "NumPy",
+        "Data Cleaning",
+        "Data Visualisation",
+        "A/B Testing",
+        "Dashboarding"
+      ],
+      "implied_skills": [
+        "Statistics"
+      ],
+      "required_skills": [
+        "A/B Testing",
+        "Dashboarding",
+        "Data Cleaning",
+        "Data Visualisation",
+        "NumPy",
+        "Pandas",
+        "Statistics"
+      ],
+      "candidate_skills": [
+        "A/B Testing",
+        "Dashboarding",
+        "Data Cleaning",
+        "Excel",
+        "Git",
+        "NumPy",
+        "Pandas",
+        "Python",
+        "SQL",
+        "Statistics"
+      ]
+    },
+    {
+      "case_id": "Data_Analytics-v05_medium_plain-p06",
+      "job_family": "Data Analytics",
+      "variant": "v05_medium_plain",
+      "variant_axes": {
+        "tone": "conversational",
+        "length": "medium",
+        "skill_density": "medium",
+        "named_count": 8,
+        "responsibility_count": 4
+      },
+      "profile_id": "da_p06",
+      "company": "Aureate Analytics",
+      "title": "Product Analyst",
+      "jd_text": "We are a small insights team at Aureate Analytics and we need a Product Analyst who is comfortable saying what is not working yet.\n\nAbout the role\nYou will be the person other teams come to for a number they can defend, which means your working files need to be readable by someone else.\n\nHere is what we actually need you to be good at:\n- SQL\n- pandas\n- NumPy\n- statistics\n- A/B testing\n- Excel\n- dashboarding\n- BigQuery\n\nWhat you will do\n- Turn a vague business question into a measurable definition\n- Work out whether a movement is real or just noise before reporting it\n- Reason about the correctness of your own aggregations and window logic\n- Move recurring reporting off manual file edits and onto a scheduled job\n\nIf that sounds like you, send your resume. We read every one.",
+      "resume_text": "Divya Suresh\ndivya.suresh@example.edu | +65 9125 4706 | Singapore\n\nSUMMARY\nBachelor of Science candidate in Marketing. Focus on evidenced, measurable work.\n\nEDUCATION\nSingapore Management University - Bachelor of Science in Marketing, expected graduation 2026\n\nSKILLS\nSQL, Excel, data visualisation, statistics, dashboarding\n\nEXPERIENCE\nBrightwater Tech - Marketing Intern (May 2025 - Aug 2025)\n- Applied Excel; Applied SQL on a supervised team project with a documented outcome.\n",
+      "named_skills": [
+        "SQL",
+        "Pandas",
+        "NumPy",
+        "Statistics",
+        "A/B Testing",
+        "Excel",
+        "Dashboarding",
+        "BigQuery"
+      ],
+      "implied_skills": [
+        "ETL"
+      ],
+      "required_skills": [
+        "A/B Testing",
+        "BigQuery",
+        "Dashboarding",
+        "Excel",
+        "NumPy",
+        "Pandas",
+        "SQL",
+        "Statistics",
+        "ETL"
+      ],
+      "candidate_skills": [
+        "Dashboarding",
+        "Data Visualisation",
+        "Excel",
+        "SQL",
+        "Statistics"
+      ]
+    },
+    {
+      "case_id": "Product_Management-v01_sparse_terse-p00",
+      "job_family": "Product Management",
+      "variant": "v01_sparse_terse",
+      "variant_axes": {
+        "tone": "terse",
+        "length": "short",
+        "skill_density": "low",
+        "named_count": 5,
+        "responsibility_count": 5
+      },
+      "profile_id": "pm_p00",
+      "company": "Meridian Labs",
+      "title": "Associate Product Manager",
+      "jd_text": "Meridian Labs is hiring a Associate Product Manager for our insights team.\n\nAbout the role\nYou will own a small surface area end to end, working with engineering and design, and you will be expected to say what you chose not to build.\n\nRequirements:\n- user research\n- backlog grooming\n- stakeholder management\n- market analysis\n- product metrics\n\nWhat you will do\n- Surface a disagreement early and arrive with a recommendation, not a problem statement\n- Compare what we offer against what a user would otherwise do, including nothing\n- Track work items and their status in a shared tracker the whole team can read\n- Articulate the user problem before anyone proposes a solution\n- Order the work and explain what you deliberately deferred this cycle\n\nSend your resume and one line on the most relevant thing you have built.",
+      "resume_text": "Chong Wan Ling\nchong.wanling@example.edu | +65 9126 4800 | Singapore\n\nSUMMARY\nMaster of Science candidate in Information Systems. Focus on evidenced, measurable work.\n\nEDUCATION\nNanyang Technological University - Master of Science in Information Systems, expected graduation 2027\n\nSKILLS\nproduct roadmap, user research, wireframing, backlog grooming, stakeholder management, market analysis, product metrics, Jira, Agile, SQL, data visualisation, Excel, A/B testing\n\nEXPERIENCE\nMeridian Labs - Product Management Intern (May 2025 - Aug 2025)\n- Applied user research; Applied backlog grooming; Applied product metrics on a supervised team project with a documented outcome.\nCoursework Project - Product Lead (Jan 2025 - Apr 2025)\n- Applied wireframing; Applied product roadmap on a supervised team project with a documented outcome.\n",
+      "named_skills": [
+        "User Research",
+        "Backlog Grooming",
+        "Stakeholder Management",
+        "Market Analysis",
+        "Product Metrics"
+      ],
+      "implied_skills": [
+        "Jira"
+      ],
+      "required_skills": [
+        "Backlog Grooming",
+        "Market Analysis",
+        "Product Metrics",
+        "Stakeholder Management",
+        "User Research",
+        "Jira"
+      ],
+      "candidate_skills": [
+        "A/B Testing",
+        "Agile",
+        "Backlog Grooming",
+        "Data Visualisation",
+        "Excel",
+        "Jira",
+        "Market Analysis",
+        "Product Metrics",
+        "Product Roadmap",
+        "SQL",
+        "Stakeholder Management",
+        "User Research",
+        "Wireframing"
+      ]
+    },
+    {
+      "case_id": "Product_Management-v02_sparse_formal-p01",
+      "job_family": "Product Management",
+      "variant": "v02_sparse_formal",
+      "variant_axes": {
+        "tone": "formal",
+        "length": "short",
+        "skill_density": "low",
+        "named_count": 5,
+        "responsibility_count": 3
+      },
+      "profile_id": "pm_p01",
+      "company": "Aureate Analytics",
+      "title": "Product Manager (Graduate Programme)",
+      "jd_text": "Aureate Analytics seeks to appoint a Product Manager (Graduate Programme) within the core infrastructure function. The successful candidate will work alongside senior practitioners and will be expected to demonstrate the following competencies.\n\nAbout the role\nYou will own a small surface area end to end, working with engineering and design, and you will be expected to say what you chose not to build.\n\nEssential requirements are as follows:\n- backlog grooming\n- stakeholder management\n- product metrics\n- SQL\n- Excel\n\nWhat you will do\n- Track work items and their status in a shared tracker the whole team can read\n- Sketch the shape of a screen before engineering commits to building it\n- Talk to users without leading them toward the answer you want\n\nRemuneration is commensurate with experience. Shortlisted applicants will be contacted within ten working days.",
+      "resume_text": "Ganesh Iyer\nganesh.iyer@example.edu | +65 9126 4801 | Singapore\n\nSUMMARY\nBachelor of Science candidate in Business Analytics. Focus on evidenced, measurable work.\n\nEDUCATION\nNational University of Singapore - Bachelor of Science in Business Analytics, expected graduation 2026\n\nSKILLS\nproduct roadmap, user research, wireframing, backlog grooming, stakeholder management, product metrics, Jira, Agile, SQL, data visualisation, Excel, statistics\n\nEXPERIENCE\nBrightwater Tech - Associate Product Intern (May 2025 - Jul 2025)\n- Applied user research; Applied product metrics on a supervised team project with a documented outcome.\n",
+      "named_skills": [
+        "Backlog Grooming",
+        "Stakeholder Management",
+        "Product Metrics",
+        "SQL",
+        "Excel"
+      ],
+      "implied_skills": [
+        "Jira",
+        "Wireframing",
+        "User Research"
+      ],
+      "required_skills": [
+        "Backlog Grooming",
+        "Excel",
+        "Product Metrics",
+        "SQL",
+        "Stakeholder Management",
+        "Jira",
+        "User Research",
+        "Wireframing"
+      ],
+      "candidate_skills": [
+        "Agile",
+        "Backlog Grooming",
+        "Data Visualisation",
+        "Excel",
+        "Jira",
+        "Product Metrics",
+        "Product Roadmap",
+        "SQL",
+        "Stakeholder Management",
+        "Statistics",
+        "User Research",
+        "Wireframing"
+      ]
+    },
+    {
+      "case_id": "Product_Management-v03_sparse_plain-p02",
+      "job_family": "Product Management",
+      "variant": "v03_sparse_plain",
+      "variant_axes": {
+        "tone": "terse",
+        "length": "medium",
+        "skill_density": "low",
+        "named_count": 6,
+        "responsibility_count": 5
+      },
+      "profile_id": "pm_p02",
+      "company": "Sentinel Data",
+      "title": "Product Owner",
+      "jd_text": "Sentinel Data is hiring a Product Owner for our applied AI team.\n\nAbout the role\nYou will own a small surface area end to end, working with engineering and design, and you will be expected to say what you chose not to build.\n\nRequirements:\n- product roadmap\n- backlog grooming\n- stakeholder management\n- SQL\n- Excel\n- data visualisation\n\nWhat you will do\n- Compare what we offer against what a user would otherwise do, including nothing\n- Track work items and their status in a shared tracker the whole team can read\n- Articulate the user problem before anyone proposes a solution\n- Talk to users without leading them toward the answer you want\n- Sketch the shape of a screen before engineering commits to building it\n\nSend your resume and one line on the most relevant thing you have built.",
+      "resume_text": "Tan Serene\ntan.serene@example.edu | +65 9126 4802 | Singapore\n\nSUMMARY\nBachelor of Science candidate in Marketing. Focus on evidenced, measurable work.\n\nEDUCATION\nSingapore Management University - Bachelor of Science in Marketing, expected graduation 2026\n\nSKILLS\nproduct roadmap, user research, wireframing, backlog grooming, product metrics, Jira, Agile, market analysis, data visualisation, Excel\n\nEXPERIENCE\nLumen Products - Product Intern (May 2025 - Aug 2025)\n- Applied user research; Applied wireframing on a supervised team project with a documented outcome.\n",
+      "named_skills": [
+        "Product Roadmap",
+        "Backlog Grooming",
+        "Stakeholder Management",
+        "SQL",
+        "Excel",
+        "Data Visualisation"
+      ],
+      "implied_skills": [
+        "Market Analysis",
+        "Jira",
+        "User Research",
+        "Wireframing"
+      ],
+      "required_skills": [
+        "Backlog Grooming",
+        "Data Visualisation",
+        "Excel",
+        "Product Roadmap",
+        "SQL",
+        "Stakeholder Management",
+        "Jira",
+        "Market Analysis",
+        "User Research",
+        "Wireframing"
+      ],
+      "candidate_skills": [
+        "Agile",
+        "Backlog Grooming",
+        "Data Visualisation",
+        "Excel",
+        "Jira",
+        "Market Analysis",
+        "Product Metrics",
+        "Product Roadmap",
+        "User Research",
+        "Wireframing"
+      ]
+    },
+    {
+      "case_id": "Product_Management-v04_sparse_verbose-p03",
+      "job_family": "Product Management",
+      "variant": "v04_sparse_verbose",
+      "variant_axes": {
+        "tone": "verbose",
+        "length": "long",
+        "skill_density": "low",
+        "named_count": 6,
+        "responsibility_count": 4
+      },
+      "profile_id": "pm_p03",
+      "company": "Lumen Products",
+      "title": "Associate Product Analyst",
+      "jd_text": "Lumen Products is a fast-growing organisation operating across the region, and we are currently looking to expand our applied AI team with a talented and motivated Associate Product Analyst who is eager to develop their career in a supportive and high-performing environment.\n\nAbout the role\nYou will own a small surface area end to end, working with engineering and design, and you will be expected to say what you chose not to build.\n\nThe role will require the following skills and attributes, which we consider essential for success in this position:\n- stakeholder management\n- product metrics\n- Jira\n- Agile\n- SQL\n- data visualisation\n\nWhat you will do\n- Order the work and explain what you deliberately deferred this cycle\n- Compare what we offer against what a user would otherwise do, including nothing\n- Articulate the user problem before anyone proposes a solution\n- Decide the one number a change is meant to move, plus the guardrails\n\nWe look forward to receiving your application and will be in touch regarding next steps should your profile match our requirements for this position.",
+      "resume_text": "Hafiz Osman\nhafiz.osman@example.edu | +65 9126 4803 | Singapore\n\nSUMMARY\nBachelor of Science candidate in Information Systems with hands-on experience across 9 tools and methods. Looking for a team where careful, evidenced work matters more than volume.\n\nEDUCATION\nNanyang Technological University - Bachelor of Science in Information Systems, expected graduation 2026\n\nSKILLS\nproduct roadmap, user research, backlog grooming, stakeholder management, product metrics, Jira, Agile, SQL, Excel\n\nEXPERIENCE\nNorthwind Digital - Business Analyst Intern (May 2025 - Jul 2025)\n- Applied backlog grooming; Applied SQL on a supervised team project with a documented outcome.\n",
+      "named_skills": [
+        "Stakeholder Management",
+        "Product Metrics",
+        "Jira",
+        "Agile",
+        "SQL",
+        "Data Visualisation"
+      ],
+      "implied_skills": [
+        "Backlog Grooming",
+        "Market Analysis"
+      ],
+      "required_skills": [
+        "Agile",
+        "Data Visualisation",
+        "Jira",
+        "Product Metrics",
+        "SQL",
+        "Stakeholder Management",
+        "Backlog Grooming",
+        "Market Analysis"
+      ],
+      "candidate_skills": [
+        "Agile",
+        "Backlog Grooming",
+        "Excel",
+        "Jira",
+        "Product Metrics",
+        "Product Roadmap",
+        "SQL",
+        "Stakeholder Management",
+        "User Research"
+      ]
+    },
+    {
+      "case_id": "Product_Management-v05_medium_plain-p06",
+      "job_family": "Product Management",
+      "variant": "v05_medium_plain",
+      "variant_axes": {
+        "tone": "conversational",
+        "length": "medium",
+        "skill_density": "medium",
+        "named_count": 8,
+        "responsibility_count": 4
+      },
+      "profile_id": "pm_p06",
+      "company": "Meridian Labs",
+      "title": "Junior Product Manager",
+      "jd_text": "We are a small payments team at Meridian Labs and we need a Junior Product Manager who is comfortable saying what is not working yet.\n\nAbout the role\nYou will own a small surface area end to end, working with engineering and design, and you will be expected to say what you chose not to build.\n\nHere is what we actually need you to be good at:\n- product roadmap\n- wireframing\n- market analysis\n- Jira\n- Agile\n- SQL\n- Excel\n- data visualisation\n\nWhat you will do\n- Articulate the user problem before anyone proposes a solution\n- Talk to users without leading them toward the answer you want\n- Order the work and explain what you deliberately deferred this cycle\n- Track work items and their status in a shared tracker the whole team can read\n\nIf that sounds like you, send your resume. We read every one.",
+      "resume_text": "Chia Meng Hui\nchia.menghui@example.edu | +65 9126 4806 | Singapore\n\nSUMMARY\nBachelor of Science candidate in Economics. Focus on evidenced, measurable work.\n\nEDUCATION\nSingapore Management University - Bachelor of Science in Economics, expected graduation 2026\n\nSKILLS\nstakeholder management, product metrics, Excel, Agile, statistics\n\nEXPERIENCE\nHarbourline Systems - Operations Intern (May 2025 - Aug 2025)\n- Applied Excel on a supervised team project with a documented outcome.\n",
+      "named_skills": [
+        "Product Roadmap",
+        "Wireframing",
+        "Market Analysis",
+        "Jira",
+        "Agile",
+        "SQL",
+        "Excel",
+        "Data Visualisation"
+      ],
+      "implied_skills": [
+        "User Research",
+        "Backlog Grooming"
+      ],
+      "required_skills": [
+        "Agile",
+        "Data Visualisation",
+        "Excel",
+        "Jira",
+        "Market Analysis",
+        "Product Roadmap",
+        "SQL",
+        "Wireframing",
+        "Backlog Grooming",
+        "User Research"
+      ],
+      "candidate_skills": [
+        "Agile",
+        "Excel",
+        "Product Metrics",
+        "Stakeholder Management",
+        "Statistics"
+      ]
+    }
+  ]
+}

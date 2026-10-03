@@ -1,0 +1,645 @@
+:root {
+  /* Colours as custom properties so the whole panel can be re-themed in one place. */
+  --bg: #f5f6f8;
+  --panel-bg: #ffffff;
+  --border: #d9dde3;
+  --text: #1c2128;
+  --text-dim: #5b6470;
+  --en: #8a93a0;
+  --accent: #2f6feb;
+  --accent-weak: #e7f0ff;
+
+  --chip-offered: #1a7f37;
+  --chip-offered-bg: #e6f4ea;
+  --chip-sensitive: #b42318;
+  --chip-sensitive-bg: #fdeceb;
+  --chip-missing: #b54708;
+  --chip-missing-bg: #fdf1e3;
+  --chip-declined: #b54708;
+  --chip-declined-bg: #fdf1e3;
+  --chip-notfill: #5b6470;
+  --chip-notfill-bg: #eef0f3;
+  --chip-filled: #1d4ed8;
+  --chip-filled-bg: #e7f0ff;
+
+  --warn-bg: #fff4e5;
+  --warn-border: #f0b429;
+
+  --radius: 8px;
+  /* One rhythm for vertical space between blocks, one for the padding inside a
+     card. Both are variables so a narrower panel can tighten them in one place
+     rather than in thirty rules. */
+  --gap: 12px;
+  --pad: 12px 16px;
+
+  /* The language toggle is fixed to the panel's top-right corner. The title
+     block reserves exactly this much horizontal room so the two never overlap,
+     at any panel width. */
+  --toggle-rail: 124px;
+
+  /* The floor below which the panel starts scrolling sideways instead of
+     reflowing. Chrome's own side panel can be dragged narrower than this, and
+     the honest behaviour there is a horizontal scroll, not a squeezed layout. */
+  --min-panel: 280px;
+
+  --fill-flash: #e8f5e9;
+  --fill-flash-border: #4caf50;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, "Segoe UI", "Microsoft YaHei", sans-serif;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+/* The panel is a single scrolling column. It used to be pinned to `width:
+   400px`, which left a white band down the right-hand side whenever Chrome's
+   side panel was dragged wider and overflowed when it was dragged narrower.
+   `width: 100%` with a declared floor is the honest version: the panel fills
+   whatever width it is given, and below the floor it scrolls rather than
+   silently reflowing into something unreadable. */
+#root {
+  width: 100%;
+  max-width: 100vw;
+  min-width: var(--min-panel);
+  box-sizing: border-box;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* --------------------------------------------------------- language toggle */
+
+/* Anchored to the panel's top-right corner. `fixed` rather than `absolute` so
+   the control stays reachable while the panel is scrolled: switching language
+   is a reading decision, and having to scroll back up to make it is a nuisance.
+   It is deliberately outside the flow, so it cannot push the header around. */
+.language-toggle {
+  position: fixed;
+  top: 8px;
+  right: 10px;
+  z-index: 30;
+  display: inline-flex;
+  gap: 2px;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1px;
+}
+
+.language-toggle button {
+  width: 38px;
+  height: 22px;
+  padding: 0;
+  font-size: 12px;
+  line-height: 1;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text);
+}
+
+.language-toggle button.active {
+  background: #4a90d9;
+  border-color: #4a90d9;
+  color: #fff;
+  font-weight: 600;
+}
+
+.language-toggle button:not(.active) {
+  border-color: transparent;
+}
+
+.language-toggle button:not(.active):hover {
+  border-color: #ccc;
+}
+
+/* The title block keeps clear of the fixed toggle. Only this block reserves the
+   room, so the primary action buttons below it are not squeezed. */
+.title-row {
+  padding-right: var(--toggle-rail);
+}
+
+/* Sticky header keeps connection status + primary actions always visible. */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--panel-bg);
+  border-bottom: 1px solid var(--border);
+  padding: var(--pad);
+}
+
+.sticky-header .title {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.sticky-header .subtitle {
+  color: var(--text-dim);
+  font-size: 11px;
+  margin-top: 2px;
+}
+
+.action-row {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.content {
+  padding: var(--pad);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.section {
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--pad);
+  min-width: 0;
+}
+
+.section > h2 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.note {
+  color: var(--text-dim);
+  font-size: 11px;
+  margin: 4px 0;
+}
+
+.en {
+  color: var(--en);
+  font-size: 11px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="url"],
+input[type="file"],
+textarea,
+select {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 3px;
+  padding: 6px 7px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 34px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--accent-weak);
+  border-color: var(--accent);
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font: inherit;
+  font-size: 12px;
+}
+
+button:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+button.small {
+  padding: 3px 7px;
+  font-size: 11px;
+}
+
+button.active {
+  background: var(--accent-weak);
+  border-color: var(--accent);
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.checkbox-row label {
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ------------------------------------------------------------- flow strip */
+
+.flow-strip {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 8px 0 0;
+  padding: 0;
+}
+
+.flow-strip li {
+  font-size: 10px;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 1px 7px;
+  white-space: nowrap;
+}
+
+.flow-strip li.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-weak);
+  font-weight: 700;
+}
+
+/* Status banner */
+.status-banner {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--pad);
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.status-line {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  flex: none;
+}
+
+.dot.up {
+  background: var(--chip-offered);
+}
+
+.dot.down {
+  background: var(--chip-sensitive);
+}
+
+.offline-warn {
+  background: var(--warn-bg);
+  border: 1px solid var(--warn-border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  color: #7a4a00;
+  font-weight: 600;
+}
+
+.prototype-banner {
+  color: var(--text-dim);
+  font-size: 11px;
+  font-style: italic;
+}
+
+/* Chips */
+.chip {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.chip.offered {
+  color: var(--chip-offered);
+  background: var(--chip-offered-bg);
+}
+.chip.sensitive_skipped {
+  color: var(--chip-sensitive);
+  background: var(--chip-sensitive-bg);
+}
+.chip.missing {
+  color: var(--chip-missing);
+  background: var(--chip-missing-bg);
+}
+.chip.declined_low_confidence {
+  color: var(--chip-declined);
+  background: var(--chip-declined-bg);
+}
+.chip.not_fillable {
+  color: var(--chip-notfill);
+  background: var(--chip-notfill-bg);
+}
+.chip.already_filled {
+  color: var(--chip-filled);
+  background: var(--chip-filled-bg);
+}
+
+/* Field table.
+
+   The table is nine columns wide and will not fit a 280px panel however it is
+   styled. Rather than let it push the whole page sideways, it scrolls inside
+   its own box: the page keeps a stable width and the one genuinely wide element
+   is the only thing that moves. */
+.field-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.field-table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  font-size: 11px;
+  table-layout: auto;
+}
+
+.field-table th,
+.field-table td {
+  border: 1px solid var(--border);
+  padding: 5px 6px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.field-table th {
+  background: #f0f2f5;
+  position: sticky;
+  top: 0;
+}
+
+.field-table .row-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field-value {
+  width: 100%;
+}
+
+/* A single line that is allowed to be shorter than its content. Used for
+   labels and provenance strings - the places where an uncontrolled page can put
+   a paragraph where a word was expected. The full text stays reachable through
+   the `title` attribute, so nothing is lost, only clipped. */
+.clip {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: bottom;
+}
+
+.field-label {
+  width: 100%;
+}
+
+.sensitive-alert {
+  background: var(--chip-sensitive-bg);
+  border: 1px solid var(--chip-sensitive);
+  color: var(--chip-sensitive);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-weight: 700;
+}
+
+.fallback-reason {
+  background: var(--warn-bg);
+  border: 1px solid var(--warn-border);
+  border-radius: 6px;
+  padding: 4px 6px;
+  margin-top: 4px;
+  font-size: 11px;
+}
+
+.edited-marker {
+  display: inline-block;
+  margin-left: 6px;
+  background: var(--accent-weak);
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 0 6px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* ------------------------------------------------------------- fill feedback */
+
+/* Set for ~800ms after a value lands in the page, so the user can see which row
+   the write belongs to. The transition is on the background, not on `display`,
+   so the fade-out is visible rather than a snap. */
+.field-table tr.row-just-filled td {
+  background: var(--fill-flash);
+  transition: background 0.4s ease-out;
+}
+
+.fill-check {
+  display: inline-block;
+  margin-left: 6px;
+  color: var(--fill-flash-border);
+  font-weight: 700;
+  animation: rjd-check-fade 2s ease-out forwards;
+}
+
+@keyframes rjd-check-fade {
+  0%,
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .field-table tr.row-just-filled td {
+    transition: none;
+  }
+  .fill-check {
+    animation: none;
+  }
+}
+
+/* ---------------------------------------------------------- resume upload */
+
+.resume-drop {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  padding: var(--pad);
+  text-align: center;
+  color: var(--text-dim);
+  background: var(--bg);
+  cursor: pointer;
+}
+
+.resume-drop.over {
+  border-color: var(--accent);
+  background: var(--accent-weak);
+  color: var(--accent);
+}
+
+.resume-drop input[type="file"] {
+  display: none;
+}
+
+.confirm-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+/* A label/value pair on one line. Below 360px the label moves above the value
+   instead of the two competing for a line that is not wide enough for both. */
+.field-row {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.field-row .field-label {
+  width: 38%;
+  flex: none;
+  margin: 0;
+  color: var(--text-dim);
+}
+
+.field-row .field-value {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px 10px;
+  font-size: 11px;
+}
+
+.summary-grid b {
+  color: var(--text);
+}
+
+.counts-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.counts-line b {
+  color: var(--text);
+}
+
+.collapsible > summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 4px 0;
+}
+
+.warn-list {
+  margin: 4px 0;
+  padding-left: 18px;
+}
+
+.warn-list li {
+  margin: 2px 0;
+}
+
+.jd-analysis {
+  font-size: 11px;
+}
+
+.jd-analysis dt {
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.jd-analysis dd {
+  margin: 0 0 2px;
+}
+
+/* ------------------------------------------------------------- narrow panel */
+
+/* Chrome's side panel is routinely dragged down to about 320px, and the CSS
+   above still assumes a little more than that in two places: the label/value
+   pairs, and the fixed language toggle's reserved rail. */
+@media (max-width: 360px) {
+  .field-row {
+    flex-direction: column;
+  }
+  .field-label {
+    width: auto;
+  }
+  .title-row {
+    padding-right: var(--toggle-rail);
+  }
+  .field-table {
+    min-width: 440px;
+    font-size: 10px;
+  }
+  .action-row button {
+    flex: 1 1 100%;
+  }
+}

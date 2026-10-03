@@ -1,0 +1,34 @@
+{
+  "resume_id": "minimal_profile",
+  "title": "Minimal profile - a single line of contact details",
+  "purpose": "The floor case. Authorises personal_info only, so there is nothing to ground an education, experience, project or skills answer with. Every such control must be reported missing, and no value may be invented to cover the gap.",
+  "synthetic": true,
+  "authorised_modules": ["personal_info"],
+  "profile": {
+    "personal_info": {
+      "full_name": "Ravi Kumar",
+      "email": "ravi.kumar@example.com",
+      "phone": "+65 9001 2233"
+    }
+  },
+  "declared_skills": [],
+  "intentionally_absent": [
+    "location",
+    "linkedin",
+    "github",
+    "portfolio",
+    "education_school",
+    "education_degree",
+    "education_major",
+    "graduation_year",
+    "gpa",
+    "top_skills",
+    "internship_employer",
+    "internship_title",
+    "internship_dates",
+    "internship_summary",
+    "project_name",
+    "project_summary"
+  ],
+  "notes": "declared_skills is empty: the rendered profile is a name, an email address and a phone number, and contains no canonical skill token at all."
+}

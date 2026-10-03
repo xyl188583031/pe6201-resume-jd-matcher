@@ -1,0 +1,102 @@
+==============================================================================
+RUN run-20260924-014232
+mode=live_api  model=openai/gpt-4o-mini  records=60
+==============================================================================
+
+## 1. Headline, counts first
+
+cond  cases  passed  coverage   clean  prefill  abstain  meanconf
+-----------------------------------------------------------------
+A        20   13/20      1/20   20/20    13/20     3/20     0.732
+B        20   15/20      1/20   20/20    15/20     0/20     0.735
+C        20   14/20      1/20   20/20    14/20     3/20     0.789
+
+## 2. Abstention, both numbers (Watch-outs p.3)
+
+  A: abstained 3/20   on hard 3/5   false abstentions (easy, abstained) 0/15   should_abstain cases 5
+  B: abstained 0/20   on hard 0/5   false abstentions (easy, abstained) 0/15   should_abstain cases 5
+  C: abstained 3/20   on hard 1/5   false abstentions (easy, abstained) 2/15   should_abstain cases 5
+
+## 3. Failures, named
+
+  A: 7 not passing
+      AIML-v02_sparse_formal-p01                       prefill miss=['education_school']
+      AIML-v04_sparse_verbose-p03                      prefill miss=['top_skills']; abstained
+      AIML-v05_medium_plain-p06                        prefill miss=['education_school']
+      Software_Engineering-v02_sparse_formal-p01       prefill miss=['education_school']
+      Software_Engineering-v05_medium_plain-p06        prefill miss=['education_school', 'top_skills']; abstained
+      Data_Analytics-v02_sparse_formal-p01             prefill miss=['education_school']
+      Product_Management-v02_sparse_formal-p01         prefill miss=['education_school']
+  B: 5 not passing
+      AIML-v02_sparse_formal-p01                       prefill miss=['top_skills']
+      AIML-v04_sparse_verbose-p03                      prefill miss=['top_skills']
+      Software_Engineering-v01_sparse_terse-p00        prefill miss=['top_skills']
+      Software_Engineering-v05_medium_plain-p06        prefill miss=['top_skills']
+      Product_Management-v05_medium_plain-p06          prefill miss=['top_skills']
+  C: 6 not passing
+      AIML-v02_sparse_formal-p01                       prefill miss=['top_skills']
+      AIML-v04_sparse_verbose-p03                      prefill miss=['top_skills']
+      Software_Engineering-v01_sparse_terse-p00        prefill miss=['top_skills']
+      Software_Engineering-v03_sparse_plain-p02        prefill miss=['top_skills']; abstained
+      Software_Engineering-v05_medium_plain-p06        prefill miss=['top_skills']; abstained
+      Product_Management-v05_medium_plain-p06          prefill miss=['top_skills']
+
+## 4. Per-field prefill exact match
+
+  A: full_name=20/20  email=20/20  education_school=14/20  top_skills=18/20
+  B: full_name=20/20  email=20/20  education_school=20/20  top_skills=15/20
+  C: full_name=20/20  email=20/20  education_school=20/20  top_skills=14/20
+
+## 5. Passed by job family
+
+  cond                AI/ML      Data Analytics  Product Management  Software Engineeri
+  A                     2/5                 4/5                 4/5                 3/5
+  B                     3/5                 5/5                 4/5                 3/5
+  C                     3/5                 5/5                 4/5                 2/5
+
+## 6. Cost and latency (live only)
+
+  A: calls=0  in=0  out=0  est_cost=$0.0000  per_case=$0.0000  latency ms median=17 max=26
+  B: calls=60  in=43,625  out=11,129  est_cost=$0.0132  per_case=$0.0007  latency ms median=9915 max=40838
+  C: calls=60  in=50,593  out=11,287  est_cost=$0.0144  per_case=$0.0007  latency ms median=10827 max=15328
+
+## 7. Cost per SUCCESSFUL task (Class5/C2 p.21)
+
+  A: total $0.0000 / 13 passed = $0.0000 per successful task   (passed 13/20)
+  B: total $0.0132 / 15 passed = $0.0009 per successful task   (passed 15/20)
+  C: total $0.0144 / 14 passed = $0.0010 per successful task   (passed 14/20)
+
+## 8. Coverage: mean fraction of JD requirements captured
+
+  A: mean coverage 0.792
+  B: mean coverage 0.792
+  C: mean coverage 0.792
+
+## 9. Condition C retrieval
+
+  top-1 similarity: min 0.000 median 1.000 max 1.000
+  chunks per case: [(4, 20)]
+  distinct chunks retrieved: 22
+  top 8: ats_keyword_02×13, onet_aiml_02×7, onet_aiml_01×5, onet_se_04×5, onet_se_07×5, onet_da_08×5, onet_pm_08×5, onet_aiml_08×4
+
+## 10. Guard activity (notes now persisted) and errors
+
+   40× literal JD requirements
+   20× condition A has no model component; its confidence is the lexical evid
+   16× literal pass added 3 skill(s) the model omitted
+    8× literal pass added 4 skill(s) the model omitted
+    6× literal pass added 1 skill(s) the model omitted
+    6× literal pass added 2 skill(s) the model omitted
+    4× literal pass added 5 skill(s) the model omitted
+    1× retrieval top-1 score 0.00 is below threshold 0.40; the answer will li
+    1× stripped claimed skill(s) with no lexical support in the resume
+    1× 1 model-claimed skill(s) had no lexical support and were removed
+    1× retrieval top-1 score 0.34 is below threshold 0.40; the answer will li
+  errors: 0
+
+## 11. Fabrication guard: proposed vs displayed
+
+  A: model-proposed-and-stripped=0   displayed-as-fact=0
+  B: model-proposed-and-stripped=0   displayed-as-fact=0
+  C: model-proposed-and-stripped=1   displayed-as-fact=0
+        stripped: Java ×1

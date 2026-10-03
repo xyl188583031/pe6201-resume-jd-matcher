@@ -1,0 +1,12 @@
+{
+  "jd_id": "jd_implied",
+  "title": "Implied requirements - nothing stated as a requirement",
+  "purpose": "The posting never lists a tool, a library or a qualification. Everything a reader would infer is left as a description of the work. It exists to see whether the assistant invents a requirement list when the text supplies none, and whether it stays quiet on fields the posting gives it no purchase on.",
+  "synthetic": true,
+  "shape": "narrative_prose",
+  "text": "Product Analyst Intern\nNorthwind Analytics, Singapore\n\nWe are a small team and we write everything down. The intern we are looking for\nwill spend the first month shadowing the analysts, then take over the weekly\nnumbers that go to the leadership meeting.\n\nYou do not need to arrive knowing our stack. You do need to be the kind of\nperson who, when a number looks wrong, keeps pulling the thread until they can\nexplain why it looked wrong.\n\nDay to day you will\n- keep the weekly numbers honest and explain the movements in a short note\n- sit with the sales team and write down what they actually ask for\n- turn those asks into something the engineers can pick up\n\nThe numbers live in a warehouse you will query directly, and the notes are\nwritten in a plain text editor. We care more about how you think than about a\nlist of tools on your resume.\n",
+  "expected_jd_skills": [],
+  "requirements_stated": false,
+  "measured_rescaled_retrieval": 0.3761,
+  "notes": "No canonical skill token appears anywhere in the text, so skill_overlap() returns 0.0 by construction (an empty requirement set scores 0.0, not 1.0). The measured retrieval score sits 0.024 under the abstention threshold, which is the most interesting number in this file: a posting a human would call clearly relevant lands on the declining side of the line. Any requirement list the assistant reports for this posting was inferred, not extracted."
+}

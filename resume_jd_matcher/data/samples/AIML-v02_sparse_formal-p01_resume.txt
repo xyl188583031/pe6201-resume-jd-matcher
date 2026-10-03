@@ -1,0 +1,17 @@
+Arun Prakash
+arun.prakash@example.edu | +65 9123 4501 | Singapore
+
+SUMMARY
+Master of Science candidate in Computer Science. Focus on evidenced, measurable work.
+
+EDUCATION
+National University of Singapore - Master of Science in Computer Science, expected graduation 2027
+
+SKILLS
+Python, machine learning, deep learning, PyTorch, scikit-learn, natural language processing (NLP), MLOps, feature engineering, model evaluation, SQL, Git, pandas, NumPy
+
+EXPERIENCE
+Aureate Analytics - Data Science Intern (May 2025 - Jul 2025)
+- Applied Python; Applied machine learning; Applied SQL on a supervised team project with a documented outcome.
+Coursework Capstone - Project Lead (Aug 2024 - Dec 2024)
+- Applied PyTorch; Applied model evaluation on a supervised team project with a documented outcome.

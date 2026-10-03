@@ -1,0 +1,45 @@
+{
+  "resume_id": "long_prose_profile",
+  "title": "Long prose profile - verbose project and internship descriptions",
+  "purpose": "Drives the maxlength paths. The internship description is over 1000 characters and the project description is over 300, so form_04's two larger limits must force a word-boundary trim rather than a silent truncation. The LinkedIn handle is a single unbreakable 56-character token, which form_04 caps at 50 characters - a limit that lands inside a word, so that field must be reported as unanswerable rather than filled with a fragment.",
+  "synthetic": true,
+  "authorised_modules": ["personal_info", "education", "internship", "projects"],
+  "profile": {
+    "personal_info": {
+      "full_name": "Zhang Wei",
+      "email": "zhang.wei@example.edu",
+      "phone": "+65 9123 4567",
+      "location": "Singapore",
+      "linkedin": "linkedin.com/in/zhang-wei-computer-science-ntu-singapore",
+      "github": "github.com/zhangwei"
+    },
+    "education": [
+      {
+        "school": "Nanyang Technological University",
+        "degree": "Master of Science",
+        "major": "Computer Science",
+        "start": "2024",
+        "end": "2026",
+        "gpa": "4.5"
+      }
+    ],
+    "internship": [
+      {
+        "employer": "Acme Corp",
+        "title": "Data Analyst Intern",
+        "start": "May 2025",
+        "end": "Aug 2025",
+        "summary": "Rewrote the nightly reconciliation routine in Python so that a run which used to be checked by hand is now verified against a stored baseline before anyone opens the file. Documented every branch of the old routine first, then replaced the manual checks one at a time and kept the notes as a short runbook that the next intern could follow without asking me. Built a small internal viewer that lists the rows the reconciliation could not classify, so the analyst on duty can clear them in one pass instead of scrolling the whole output. When the viewer's first version was slow, profiled it, found the repeated SQL reads against the same table, and cached them, which cut the waiting time enough that the duty analyst stopped opening the file in a text editor altogether. Pulled the six months of exception records into one table and used simple descriptive statistics to show which three exception types accounted for most of the manual work, which is what convinced the team to automate those first. Trained two new joiners on the routine, wrote the handover notes for the next intern including the two known failure modes and the exact command used to reproduce them, and maintained the shared spreadsheet the wider team used to record exceptions."
+      }
+    ],
+    "projects": [
+      {
+        "name": "Resume Matcher",
+        "summary": "Retrieval-augmented resume-to-posting matcher written in Python. Ingests a candidate profile and a posting, splits both into chunks, indexes the chunks, retrieves the closest ones for the posting, and uses them as notes when drafting each answer. Built the chunking, the retrieval and the drafting loop; wrote the checks that stop a draft from asserting anything the profile does not state."
+      }
+    ]
+  },
+  "declared_skills": ["Excel", "Git", "Python", "SQL", "Statistics"],
+  "intentionally_absent": [],
+  "notes": "declared_skills was first written from the intended vocabulary and came back wrong on the first matrix run: the renderer also finds `Excel` (from the word 'spreadsheet') and `Statistics`, and finds neither `PyTorch` nor `Dashboarding` nor `Wireframing`, because this profile's prose does not use those words. The value above is what the renderer actually produces. That correction is itself the argument for recomputing the list in the driver instead of trusting the file."
+}

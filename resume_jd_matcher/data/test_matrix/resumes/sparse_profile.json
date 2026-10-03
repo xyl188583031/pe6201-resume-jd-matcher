@@ -1,0 +1,37 @@
+{
+  "resume_id": "sparse_profile",
+  "title": "Sparse profile - personal information and education only",
+  "purpose": "Authorises only two modules. No employer, no project and no skill list exist anywhere in the data, so every field that would draw on those modules must come back as missing rather than be invented.",
+  "synthetic": true,
+  "authorised_modules": ["personal_info", "education"],
+  "profile": {
+    "personal_info": {
+      "full_name": "Tan Mei Ling",
+      "email": "tan.meiling@example.edu",
+      "phone": "+60 12 345 6789",
+      "location": "Kuala Lumpur",
+      "linkedin": "linkedin.com/in/tanmeiling"
+    },
+    "education": [
+      {
+        "school": "Nanyang Technological University",
+        "degree": "Bachelor of Engineering",
+        "major": "Computer Engineering",
+        "start": "2022",
+        "end": "2026"
+      }
+    ]
+  },
+  "declared_skills": [],
+  "intentionally_absent": [
+    "top_skills",
+    "gpa",
+    "internship_employer",
+    "internship_title",
+    "internship_dates",
+    "internship_summary",
+    "project_name",
+    "project_summary"
+  ],
+  "notes": "declared_skills is empty on purpose: the rendered profile contains no canonical skill token, so any skill-bearing value the assistant offers would be a fabrication."
+}

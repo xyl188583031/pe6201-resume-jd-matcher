@@ -1,0 +1,15 @@
+Ng Hui Min
+ng.huimin@example.edu | +65 9123 4502 | Singapore
+
+SUMMARY
+Bachelor of Science candidate in Information Systems. Focus on evidenced, measurable work.
+
+EDUCATION
+Singapore Management University - Bachelor of Science in Information Systems, expected graduation 2026
+
+SKILLS
+Python, machine learning, deep learning, PyTorch, scikit-learn, natural language processing (NLP), MLOps, model evaluation, SQL, Git, pandas
+
+EXPERIENCE
+Brightwater Tech - AI Intern (May 2025 - Aug 2025)
+- Applied Python; Applied natural language processing (NLP); Applied MLOps on a supervised team project with a documented outcome.

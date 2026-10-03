@@ -1,0 +1,54 @@
+{
+  "resume_id": "full_profile",
+  "title": "Full profile - four modules complete, broad skill set",
+  "purpose": "The positive control. Every module is authorised and populated, and the candidate states at least three skills that the named JD also asks for, so the assistant has something honest to offer for every field the form exposes.",
+  "synthetic": true,
+  "authorised_modules": ["personal_info", "education", "internship", "projects"],
+  "profile": {
+    "personal_info": {
+      "full_name": "Zhang Wei",
+      "email": "zhang.wei@example.edu",
+      "phone": "+65 9123 4567",
+      "location": "Singapore",
+      "linkedin": "linkedin.com/in/zhangwei",
+      "github": "github.com/zhangwei"
+    },
+    "education": [
+      {
+        "school": "Nanyang Technological University",
+        "degree": "Master of Science",
+        "major": "Computer Science",
+        "start": "2024",
+        "end": "2026",
+        "gpa": "4.5"
+      }
+    ],
+    "internship": [
+      {
+        "employer": "Acme Corp",
+        "title": "Data Analyst Intern",
+        "start": "May 2025",
+        "end": "Aug 2025",
+        "summary": "Built dashboards with Python, SQL and Tableau for the risk team; trained a PyTorch model to flag anomalous claims; ran A/B testing on release cohorts."
+      }
+    ],
+    "projects": [
+      {
+        "name": "Resume Matcher",
+        "summary": "A retrieval-augmented prototype written in Python."
+      }
+    ]
+  },
+  "declared_skills": [
+    "A/B Testing",
+    "Dashboarding",
+    "Data Visualisation",
+    "Git",
+    "PyTorch",
+    "Python",
+    "SQL",
+    "Wireframing"
+  ],
+  "intentionally_absent": [],
+  "notes": "declared_skills is the exact canonical skill set src/taxonomy.match_skills finds in the rendered authorised profile. scripts/run_form_matrix.py recomputes it and fails the run on any disagreement, so this list cannot drift from the data above. Two entries are incidental rather than intended: `Git` comes from the GitHub URL and `Wireframing` from the word 'prototype' in the project summary. They are declared rather than removed, because the fabrication check has to be told the truth about what the profile says. Wording matters to the taxonomy: `match_skills` anchors every alias on `(?![A-Za-z0-9])`, so the phrase `A/B tests` does NOT match the alias `a/b test` - the plural `s` blocks the right edge - while `A/B testing` does match. The internship summary is written as `A/B testing` for that reason; changing it back to `A/B tests` will fail this file's own consistency check."
+}

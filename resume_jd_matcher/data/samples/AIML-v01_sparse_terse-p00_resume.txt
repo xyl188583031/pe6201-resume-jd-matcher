@@ -1,0 +1,17 @@
+Tan Wei Ling
+tan.weiling@example.edu | +65 9123 4500 | Singapore
+
+SUMMARY
+Master of Science candidate in Artificial Intelligence. Focus on evidenced, measurable work.
+
+EDUCATION
+Nanyang Technological University - Master of Science in Artificial Intelligence, expected graduation 2027
+
+SKILLS
+Python, machine learning, deep learning, PyTorch, TensorFlow, scikit-learn, natural language processing (NLP), MLOps, feature engineering, model evaluation, SQL, Git, Docker, pandas
+
+EXPERIENCE
+Sentinel Data - Machine Learning Intern (May 2025 - Aug 2025)
+- Applied Python; Applied PyTorch; Applied MLOps on a supervised team project with a documented outcome.
+University Research Lab - Student Researcher (Jan 2025 - Apr 2025)
+- Applied natural language processing (NLP); Applied model evaluation on a supervised team project with a documented outcome.

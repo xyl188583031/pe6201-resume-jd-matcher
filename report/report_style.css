@@ -1,0 +1,117 @@
+/* report_style.css — A1-style layout for the PE6201 final report.
+   Consumed by render_report.py (inlined into final_report_v8.html).
+   Page header / footer are NOT set here: Chromium (Edge) does not support
+   the CSS Paged Media margin boxes (@top-left etc.). They are injected per
+   page by the CDP driver (_print_pdf.mjs) via Page.printToPDF's
+   headerTemplate / footerTemplate, so `Page N` uses the real page counter. */
+
+@page {
+  size: A4;
+}
+
+/* ---------- base ---------- */
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.5;
+  color: #2c2c2c;
+  margin: 0;
+}
+
+/* ---------- headings ---------- */
+h1 {
+  font-size: 24pt;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #1a1a1a;
+  margin: 0 0 0.6em 0;
+}
+
+h2 {
+  font-size: 14pt;
+  font-weight: 700;
+  color: #A6192E;
+  margin: 1.5em 0 0.5em 0;
+  page-break-after: avoid;
+}
+
+h3 {
+  font-size: 11.5pt;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 1.1em 0 0.4em 0;
+  page-break-after: avoid;
+}
+
+/* ---------- text ---------- */
+p {
+  margin: 0 0 0.7em 0;
+  orphans: 2;
+  widows: 2;
+}
+
+strong {
+  color: #1a1a1a;
+}
+
+em {
+  font-style: italic;
+}
+
+code {
+  font-family: Consolas, "Cascadia Mono", "Courier New", monospace;
+  font-size: 9.5pt;
+  background: #f3f3f3;
+  border-radius: 2px;
+  padding: 0 3px;
+}
+
+/* ---------- tables ---------- */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 10pt;
+  margin: 0.5em 0 1em 0;
+  page-break-inside: auto;
+}
+
+thead {
+  display: table-header-group;
+}
+
+tr {
+  page-break-inside: avoid;
+}
+
+th {
+  background: #f5f5f5;
+  color: #1a1a1a;
+  font-weight: 700;
+  text-align: left;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 4px 6px;
+  vertical-align: top;
+  line-height: 1.35;
+}
+
+/* ---------- quotations ---------- */
+blockquote {
+  border-left: 3px solid #A6192E;
+  background: #fafafa;
+  margin: 0.8em 0;
+  padding: 0.45em 0.9em;
+  color: #2c2c2c;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}

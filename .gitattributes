@@ -1,0 +1,33 @@
+# Normalise text files, keep binaries binary.
+* text=auto
+
+# --- source ---------------------------------------------------------------
+*.py    text eol=lf
+*.ts    text eol=lf
+*.js    text eol=lf
+*.mjs   text eol=lf
+*.json  text eol=lf
+*.yaml  text eol=lf
+*.yml   text eol=lf
+*.md    text eol=lf
+*.txt   text eol=lf
+*.sh    text eol=lf
+*.html  text eol=lf
+*.css   text eol=lf
+*.csv   text eol=lf
+
+# --- binary ---------------------------------------------------------------
+*.pdf   binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.mp4   binary
+*.webm  binary
+*.sqlite3 binary
+*.bin   binary
+*.onnx  binary
+*.safetensors binary
+*.model binary
+*.vocab binary
+*.spm   binary

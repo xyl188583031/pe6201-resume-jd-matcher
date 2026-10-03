@@ -1,0 +1,18 @@
+Sentinel Data seeks to appoint a Machine Learning Engineer within the platform function. The successful candidate will work alongside senior practitioners and will be expected to demonstrate the following competencies.
+
+About the role
+Our applied AI team ships models into products used by real customers, so we care as much about evaluation and monitoring as about training.
+
+Essential requirements are as follows:
+- deep learning
+- PyTorch
+- TensorFlow
+- natural language processing (NLP)
+- MLOps
+
+What you will do
+- Put a trained artifact behind a service other teams can call
+- Prepare the raw rows and document what you excluded and why
+- Compare candidate approaches against a stated metric instead of shipping the first one that works
+
+Remuneration is commensurate with experience. Shortlisted applicants will be contacted within ten working days.

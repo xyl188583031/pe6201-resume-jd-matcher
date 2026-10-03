@@ -1,0 +1,12 @@
+{
+  "jd_id": "jd_named",
+  "title": "Named requirements - AI/ML applied research internship",
+  "purpose": "The posting states its hard requirements explicitly. Exactly four canonical skills appear in the whole text, which makes the skill-overlap ratio against each resume reproducible by hand rather than a number the reader has to take on trust.",
+  "synthetic": true,
+  "shape": "requirements_list",
+  "text": "Applied Research Intern - Ranking Models\nAcme Corp, Singapore - six months, on site\n\nRequirements\n- Python, for reading and changing existing code\n- PyTorch, for training a model end to end\n- SQL, for answering a question from a table\n- Statistics, for judging whether a difference is real\n\nYou will train and evaluate ranking models, write up experiments so a\ncolleague can reproduce them, and present findings to the recruiting team\nonce a fortnight.\n",
+  "expected_jd_skills": ["PyTorch", "Python", "SQL", "Statistics"],
+  "requirements_stated": true,
+  "measured_rescaled_retrieval": 0.7199,
+  "notes": "This posting was first written as four paragraphs of narrative prose. That version measured 0.334 on the rescaled retrieval scale - below the 0.4 abstention threshold - so every tailored field abstained and the matrix was measuring the posting's writing style rather than the assistant. The shape is therefore stated explicitly and the measured score recorded, so a later run can tell which regime it is in. The phrase 'machine learning' is deliberately absent: it is a canonical skill token, and its presence would raise the overlap denominator from four to five and make the documented 1/4 figure wrong."
+}

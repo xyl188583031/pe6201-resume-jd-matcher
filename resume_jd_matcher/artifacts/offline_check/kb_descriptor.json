@@ -1,0 +1,18 @@
+{
+ "chunks": 54,
+ "store": {
+  "backend": "chroma",
+  "persist_dir": "artifacts\\offline_check\\chroma_db"
+ },
+ "embedder": {
+  "backend": "sentence-transformers",
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "local_path": "D:\\NTU\\pe6201\\individual project\\resume_jd_matcher\\vendor\\models\\all-MiniLM-L6-v2",
+  "loaded_from": "D:\\NTU\\pe6201\\individual project\\resume_jd_matcher\\vendor\\models\\all-MiniLM-L6-v2",
+  "needs_download": false,
+  "semantic": true,
+  "note": "semantic embedder; this is the configuration the Problem Statement assumes",
+  "reason": "sentence-transformers loaded from the local copy at D:\\NTU\\pe6201\\individual project\\resume_jd_matcher\\vendor\\models\\all-MiniLM-L6-v2"
+ },
+ "notes": []
+}

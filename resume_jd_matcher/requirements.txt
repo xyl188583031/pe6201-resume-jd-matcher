@@ -1,0 +1,36 @@
+# ---- Core (required) ------------------------------------------------
+# Everything below is enough to run: baseline (A), offline harness,
+# evaluation, and tests.
+numpy>=1.26
+scikit-learn>=1.4
+pandas>=2.1
+PyYAML>=6.0
+python-dotenv>=1.0
+pypdf>=4.0            # PyPDF2 successor; PyPDF2 is also supported if present
+openai>=1.30          # OpenRouter is OpenAI-compatible
+pytest>=8.0
+
+# ---- RAG vector store (required for condition C) --------------------
+chromadb>=0.5
+
+# ---- Embeddings (optional, strongly recommended) --------------------
+# Pulls in torch. If unavailable, set retrieval.embedding_backend: tfidf
+# in config.yaml and the local store falls back to deterministic vectors.
+sentence-transformers>=3.0
+
+# ---- UI -------------------------------------------------------------
+streamlit>=1.36
+
+# ---- Browser-assistant backend (required for server/ and the extension) ----
+# `server/` is a thin HTTP layer over `src/`; it re-implements no policy, so it
+# needs nothing beyond a web framework. Versions below are the ones this repo was
+# verified against on 2026-09-25.
+fastapi>=0.115          # pinned to the v2 Pydantic API used by server/schemas.py
+uvicorn>=0.30           # ASGI server; server.app.run asserts a loopback bind
+pydantic>=2.7           # server/schemas.py uses the v2 `field_validator` API
+httpx>=0.27             # the only HTTP client; used by /jd/fetch and scripts/e2e_check.py
+
+# ---- Job-posting reader (optional, recommended) ---------------------
+# server/jd_fetch.py prefers BeautifulSoup and falls back to a regex extractor,
+# so this is optional - but without it a Script-/Style-heavy page reads worse.
+beautifulsoup4>=4.12
